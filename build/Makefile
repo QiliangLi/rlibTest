@@ -111,6 +111,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named cas_client
+
+# Build rule for target.
+cas_client: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 cas_client
+.PHONY : cas_client
+
+# fast build rule for target.
+cas_client/fast:
+	$(MAKE) -f CMakeFiles/cas_client.dir/build.make CMakeFiles/cas_client.dir/build
+.PHONY : cas_client/fast
+
+#=============================================================================
 # Target rules for targets named write_client
 
 # Build rule for target.
@@ -161,6 +174,33 @@ rdma: cmake_check_build_system
 rdma/fast:
 	$(MAKE) -f CMakeFiles/rdma.dir/build.make CMakeFiles/rdma.dir/build
 .PHONY : rdma/fast
+
+example/cas/client.o: example/cas/client.cpp.o
+
+.PHONY : example/cas/client.o
+
+# target to build an object file
+example/cas/client.cpp.o:
+	$(MAKE) -f CMakeFiles/cas_client.dir/build.make CMakeFiles/cas_client.dir/example/cas/client.cpp.o
+.PHONY : example/cas/client.cpp.o
+
+example/cas/client.i: example/cas/client.cpp.i
+
+.PHONY : example/cas/client.i
+
+# target to preprocess a source file
+example/cas/client.cpp.i:
+	$(MAKE) -f CMakeFiles/cas_client.dir/build.make CMakeFiles/cas_client.dir/example/cas/client.cpp.i
+.PHONY : example/cas/client.cpp.i
+
+example/cas/client.s: example/cas/client.cpp.s
+
+.PHONY : example/cas/client.s
+
+# target to generate assembly for a file
+example/cas/client.cpp.s:
+	$(MAKE) -f CMakeFiles/cas_client.dir/build.make CMakeFiles/cas_client.dir/example/cas/client.cpp.s
+.PHONY : example/cas/client.cpp.s
 
 example/read/client.o: example/read/client.cpp.o
 
@@ -250,11 +290,15 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
+	@echo "... cas_client"
 	@echo "... write_client"
 	@echo "... rebuild_cache"
 	@echo "... read_client"
 	@echo "... server"
 	@echo "... rdma"
+	@echo "... example/cas/client.o"
+	@echo "... example/cas/client.i"
+	@echo "... example/cas/client.s"
 	@echo "... example/read/client.o"
 	@echo "... example/read/client.i"
 	@echo "... example/read/client.s"
