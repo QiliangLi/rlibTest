@@ -15,8 +15,10 @@ add_library(rdma STATIC ${SOURCES})
 set_target_properties(rdma PROPERTIES LINKER_LANGUAGE CXX)
 target_link_libraries(rdma -lpthread ibverbs)
 
-add_executable(server "example/read/server.cpp")
-add_executable(client "example/read/client.cpp")
+add_executable(server "example/server.cpp")
+add_executable(read_client "example/read/client.cpp")
+add_executable(write_client "example/write/client.cpp")
 
 target_link_libraries(server rdma)
-target_link_libraries(client rdma)
+target_link_libraries(read_client rdma)
+target_link_libraries(write_client rdma)

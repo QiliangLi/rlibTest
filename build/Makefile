@@ -56,17 +56,6 @@ CMAKE_BINARY_DIR = /home/hadoop/rlibTest/build
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/cmake-3.14.5/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
@@ -77,6 +66,17 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/cmake-3.14.5/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -111,17 +111,30 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named client
+# Target rules for targets named write_client
 
 # Build rule for target.
-client: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 client
-.PHONY : client
+write_client: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 write_client
+.PHONY : write_client
 
 # fast build rule for target.
-client/fast:
-	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/build
-.PHONY : client/fast
+write_client/fast:
+	$(MAKE) -f CMakeFiles/write_client.dir/build.make CMakeFiles/write_client.dir/build
+.PHONY : write_client/fast
+
+#=============================================================================
+# Target rules for targets named read_client
+
+# Build rule for target.
+read_client: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 read_client
+.PHONY : read_client
+
+# fast build rule for target.
+read_client/fast:
+	$(MAKE) -f CMakeFiles/read_client.dir/build.make CMakeFiles/read_client.dir/build
+.PHONY : read_client/fast
 
 #=============================================================================
 # Target rules for targets named server
@@ -155,7 +168,7 @@ example/read/client.o: example/read/client.cpp.o
 
 # target to build an object file
 example/read/client.cpp.o:
-	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/example/read/client.cpp.o
+	$(MAKE) -f CMakeFiles/read_client.dir/build.make CMakeFiles/read_client.dir/example/read/client.cpp.o
 .PHONY : example/read/client.cpp.o
 
 example/read/client.i: example/read/client.cpp.i
@@ -164,7 +177,7 @@ example/read/client.i: example/read/client.cpp.i
 
 # target to preprocess a source file
 example/read/client.cpp.i:
-	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/example/read/client.cpp.i
+	$(MAKE) -f CMakeFiles/read_client.dir/build.make CMakeFiles/read_client.dir/example/read/client.cpp.i
 .PHONY : example/read/client.cpp.i
 
 example/read/client.s: example/read/client.cpp.s
@@ -173,35 +186,62 @@ example/read/client.s: example/read/client.cpp.s
 
 # target to generate assembly for a file
 example/read/client.cpp.s:
-	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/example/read/client.cpp.s
+	$(MAKE) -f CMakeFiles/read_client.dir/build.make CMakeFiles/read_client.dir/example/read/client.cpp.s
 .PHONY : example/read/client.cpp.s
 
-example/read/server.o: example/read/server.cpp.o
+example/server.o: example/server.cpp.o
 
-.PHONY : example/read/server.o
+.PHONY : example/server.o
 
 # target to build an object file
-example/read/server.cpp.o:
-	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/example/read/server.cpp.o
-.PHONY : example/read/server.cpp.o
+example/server.cpp.o:
+	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/example/server.cpp.o
+.PHONY : example/server.cpp.o
 
-example/read/server.i: example/read/server.cpp.i
+example/server.i: example/server.cpp.i
 
-.PHONY : example/read/server.i
+.PHONY : example/server.i
 
 # target to preprocess a source file
-example/read/server.cpp.i:
-	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/example/read/server.cpp.i
-.PHONY : example/read/server.cpp.i
+example/server.cpp.i:
+	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/example/server.cpp.i
+.PHONY : example/server.cpp.i
 
-example/read/server.s: example/read/server.cpp.s
+example/server.s: example/server.cpp.s
 
-.PHONY : example/read/server.s
+.PHONY : example/server.s
 
 # target to generate assembly for a file
-example/read/server.cpp.s:
-	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/example/read/server.cpp.s
-.PHONY : example/read/server.cpp.s
+example/server.cpp.s:
+	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/example/server.cpp.s
+.PHONY : example/server.cpp.s
+
+example/write/client.o: example/write/client.cpp.o
+
+.PHONY : example/write/client.o
+
+# target to build an object file
+example/write/client.cpp.o:
+	$(MAKE) -f CMakeFiles/write_client.dir/build.make CMakeFiles/write_client.dir/example/write/client.cpp.o
+.PHONY : example/write/client.cpp.o
+
+example/write/client.i: example/write/client.cpp.i
+
+.PHONY : example/write/client.i
+
+# target to preprocess a source file
+example/write/client.cpp.i:
+	$(MAKE) -f CMakeFiles/write_client.dir/build.make CMakeFiles/write_client.dir/example/write/client.cpp.i
+.PHONY : example/write/client.cpp.i
+
+example/write/client.s: example/write/client.cpp.s
+
+.PHONY : example/write/client.s
+
+# target to generate assembly for a file
+example/write/client.cpp.s:
+	$(MAKE) -f CMakeFiles/write_client.dir/build.make CMakeFiles/write_client.dir/example/write/client.cpp.s
+.PHONY : example/write/client.cpp.s
 
 # Help Target
 help:
@@ -209,17 +249,21 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... client"
+	@echo "... write_client"
+	@echo "... rebuild_cache"
+	@echo "... read_client"
 	@echo "... server"
 	@echo "... rdma"
 	@echo "... example/read/client.o"
 	@echo "... example/read/client.i"
 	@echo "... example/read/client.s"
-	@echo "... example/read/server.o"
-	@echo "... example/read/server.i"
-	@echo "... example/read/server.s"
+	@echo "... example/server.o"
+	@echo "... example/server.i"
+	@echo "... example/server.s"
+	@echo "... example/write/client.o"
+	@echo "... example/write/client.i"
+	@echo "... example/write/client.s"
 .PHONY : help
 
 

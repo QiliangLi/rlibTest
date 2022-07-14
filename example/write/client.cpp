@@ -45,33 +45,30 @@ int main(int argc, char *argv[])
     char *local_buf = buffer;
     uint64_t address = 0;
     int msg_len = 11; // length of "hello world"
-
     ConnStatus rc;
 
-    for (int i = 0; i < 10; i++)
-    {
-        rc = qp->post_send(IBV_WR_RDMA_READ, local_buf, msg_len, address, IBV_SEND_SIGNALED);
-        if (rc == SUCC)
-        {
-            printf("client: post ok\n");
-        }
-        else
-        {
-            printf("client: post fail. rc=%d\n", rc);
-        }
-        
-        rc = qp->poll_till_completion(wc, no_timeout);
-        // then get the results, stored in the local_buffer
-        if (rc == SUCC)
-        {
-            printf("client: poll ok\n");
-            printf("msg read: %s\n", local_buf);
-        }
-        else
-        {
-            printf("client: poll fail. rc=%d\n", rc);
-        }
-    }
+    // read
+    rc = qp->post_send(IBV_WR_RDMA_READ, local_buf, msg_len, address, IBV_SEND_SIGNALED);
+    rc == SUCC ? printf("client: post ok\n") : printf("client: post fail. rc=%d\n", rc);
+    rc = qp->poll_till_completion(wc, no_timeout);
+    rc == SUCC ? printf("client: poll ok\nmsg read: %s\n", local_buf) : printf("client: poll fail. rc=%d\n", rc);
+
+    // RDMA WRITE a string to remote and then RDMA READ it
+    // fill a string to the local register memory region
+    char s[] = "LQL233";
+    memcpy(local_buf, s, strlen(s));
+
+    // write
+    rc = qp->post_send(IBV_WR_RDMA_WRITE, local_buf, 6, address, IBV_SEND_SIGNALED);
+    rc == SUCC ? printf("client: post ok\n") : printf("client: post fail. rc=%d\n", rc);
+    rc = qp->poll_till_completion(wc, no_timeout);
+    rc == SUCC ? printf("client: poll ok\n") : printf("client: poll fail. rc=%d\n", rc);
+
+    // read
+    rc = qp->post_send(IBV_WR_RDMA_READ, local_buf, msg_len, address, IBV_SEND_SIGNALED);
+    rc == SUCC ? printf("client: post ok\n") : printf("client: post fail. rc=%d\n", rc);
+    rc = qp->poll_till_completion(wc, no_timeout);
+    rc == SUCC ? printf("client: poll ok\nmsg read: %s\n", local_buf) : printf("client: poll fail. rc=%d\n", rc);
 
     return 0;
 }
