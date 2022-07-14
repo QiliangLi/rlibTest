@@ -57,27 +57,27 @@ include CMakeFiles/client.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/client.dir/flags.make
 
-CMakeFiles/client.dir/example/client.cpp.o: CMakeFiles/client.dir/flags.make
-CMakeFiles/client.dir/example/client.cpp.o: ../example/client.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hadoop/rlibTest/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/client.dir/example/client.cpp.o"
-	/opt/rh/devtoolset-8/root/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/client.dir/example/client.cpp.o -c /home/hadoop/rlibTest/example/client.cpp
+CMakeFiles/client.dir/example/read/client.cpp.o: CMakeFiles/client.dir/flags.make
+CMakeFiles/client.dir/example/read/client.cpp.o: ../example/read/client.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hadoop/rlibTest/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/client.dir/example/read/client.cpp.o"
+	/opt/rh/devtoolset-8/root/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/client.dir/example/read/client.cpp.o -c /home/hadoop/rlibTest/example/read/client.cpp
 
-CMakeFiles/client.dir/example/client.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/client.dir/example/client.cpp.i"
-	/opt/rh/devtoolset-8/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hadoop/rlibTest/example/client.cpp > CMakeFiles/client.dir/example/client.cpp.i
+CMakeFiles/client.dir/example/read/client.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/client.dir/example/read/client.cpp.i"
+	/opt/rh/devtoolset-8/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hadoop/rlibTest/example/read/client.cpp > CMakeFiles/client.dir/example/read/client.cpp.i
 
-CMakeFiles/client.dir/example/client.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/client.dir/example/client.cpp.s"
-	/opt/rh/devtoolset-8/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hadoop/rlibTest/example/client.cpp -o CMakeFiles/client.dir/example/client.cpp.s
+CMakeFiles/client.dir/example/read/client.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/client.dir/example/read/client.cpp.s"
+	/opt/rh/devtoolset-8/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hadoop/rlibTest/example/read/client.cpp -o CMakeFiles/client.dir/example/read/client.cpp.s
 
 # Object files for target client
 client_OBJECTS = \
-"CMakeFiles/client.dir/example/client.cpp.o"
+"CMakeFiles/client.dir/example/read/client.cpp.o"
 
 # External object files for target client
 client_EXTERNAL_OBJECTS =
 
-client: CMakeFiles/client.dir/example/client.cpp.o
+client: CMakeFiles/client.dir/example/read/client.cpp.o
 client: CMakeFiles/client.dir/build.make
 client: librdma.a
 client: CMakeFiles/client.dir/link.txt

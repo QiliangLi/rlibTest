@@ -57,27 +57,27 @@ include CMakeFiles/server.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/server.dir/flags.make
 
-CMakeFiles/server.dir/example/server.cpp.o: CMakeFiles/server.dir/flags.make
-CMakeFiles/server.dir/example/server.cpp.o: ../example/server.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hadoop/rlibTest/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/server.dir/example/server.cpp.o"
-	/opt/rh/devtoolset-8/root/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/server.dir/example/server.cpp.o -c /home/hadoop/rlibTest/example/server.cpp
+CMakeFiles/server.dir/example/read/server.cpp.o: CMakeFiles/server.dir/flags.make
+CMakeFiles/server.dir/example/read/server.cpp.o: ../example/read/server.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hadoop/rlibTest/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/server.dir/example/read/server.cpp.o"
+	/opt/rh/devtoolset-8/root/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/server.dir/example/read/server.cpp.o -c /home/hadoop/rlibTest/example/read/server.cpp
 
-CMakeFiles/server.dir/example/server.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/server.dir/example/server.cpp.i"
-	/opt/rh/devtoolset-8/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hadoop/rlibTest/example/server.cpp > CMakeFiles/server.dir/example/server.cpp.i
+CMakeFiles/server.dir/example/read/server.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/server.dir/example/read/server.cpp.i"
+	/opt/rh/devtoolset-8/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hadoop/rlibTest/example/read/server.cpp > CMakeFiles/server.dir/example/read/server.cpp.i
 
-CMakeFiles/server.dir/example/server.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/server.dir/example/server.cpp.s"
-	/opt/rh/devtoolset-8/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hadoop/rlibTest/example/server.cpp -o CMakeFiles/server.dir/example/server.cpp.s
+CMakeFiles/server.dir/example/read/server.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/server.dir/example/read/server.cpp.s"
+	/opt/rh/devtoolset-8/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hadoop/rlibTest/example/read/server.cpp -o CMakeFiles/server.dir/example/read/server.cpp.s
 
 # Object files for target server
 server_OBJECTS = \
-"CMakeFiles/server.dir/example/server.cpp.o"
+"CMakeFiles/server.dir/example/read/server.cpp.o"
 
 # External object files for target server
 server_EXTERNAL_OBJECTS =
 
-server: CMakeFiles/server.dir/example/server.cpp.o
+server: CMakeFiles/server.dir/example/read/server.cpp.o
 server: CMakeFiles/server.dir/build.make
 server: librdma.a
 server: CMakeFiles/server.dir/link.txt

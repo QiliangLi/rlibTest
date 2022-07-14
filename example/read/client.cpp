@@ -46,26 +46,31 @@ int main(int argc, char *argv[])
     uint64_t address = 0;
     int msg_len = 11; // length of "hello world"
 
-    // read an uint64_t from the server
-    auto rc = qp->post_send(IBV_WR_RDMA_READ, local_buf, msg_len, address, IBV_SEND_SIGNALED);
-    if (rc == SUCC)
+    ConnStatus rc;
+
+    for (int i = 0; i < 10; i++)
     {
-        printf("client: post ok\n");
-    }
-    else
-    {
-        printf("client: post fail. rc=%d\n", rc);
-    }
-    rc = qp->poll_till_completion(wc, no_timeout);
-    // then get the results, stored in the local_buffer
-    if (rc == SUCC)
-    {
-        printf("client: poll ok\n");
-        printf("msg read: %s\n", local_buf);
-    }
-    else
-    {
-        printf("client: poll fail. rc=%d\n", rc);
+        rc = qp->post_send(IBV_WR_RDMA_READ, local_buf, msg_len, address, IBV_SEND_SIGNALED);
+        if (rc == SUCC)
+        {
+            printf("client: post ok\n");
+        }
+        else
+        {
+            printf("client: post fail. rc=%d\n", rc);
+        }
+        
+        rc = qp->poll_till_completion(wc, no_timeout);
+        // then get the results, stored in the local_buffer
+        if (rc == SUCC)
+        {
+            printf("client: poll ok\n");
+            printf("msg read: %s\n", local_buf);
+        }
+        else
+        {
+            printf("client: poll fail. rc=%d\n", rc);
+        }
     }
 
     return 0;

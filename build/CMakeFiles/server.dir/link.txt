@@ -1,1 +1,1 @@
-/opt/rh/devtoolset-8/root/usr/bin/c++   -g  -rdynamic CMakeFiles/server.dir/example/server.cpp.o  -o server librdma.a -lpthread -libverbs 
+/opt/rh/devtoolset-8/root/usr/bin/c++   -g  -rdynamic CMakeFiles/server.dir/example/read/server.cpp.o  -o server librdma.a -lpthread -libverbs 

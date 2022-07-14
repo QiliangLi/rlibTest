@@ -149,59 +149,59 @@ rdma/fast:
 	$(MAKE) -f CMakeFiles/rdma.dir/build.make CMakeFiles/rdma.dir/build
 .PHONY : rdma/fast
 
-example/client.o: example/client.cpp.o
+example/read/client.o: example/read/client.cpp.o
 
-.PHONY : example/client.o
-
-# target to build an object file
-example/client.cpp.o:
-	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/example/client.cpp.o
-.PHONY : example/client.cpp.o
-
-example/client.i: example/client.cpp.i
-
-.PHONY : example/client.i
-
-# target to preprocess a source file
-example/client.cpp.i:
-	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/example/client.cpp.i
-.PHONY : example/client.cpp.i
-
-example/client.s: example/client.cpp.s
-
-.PHONY : example/client.s
-
-# target to generate assembly for a file
-example/client.cpp.s:
-	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/example/client.cpp.s
-.PHONY : example/client.cpp.s
-
-example/server.o: example/server.cpp.o
-
-.PHONY : example/server.o
+.PHONY : example/read/client.o
 
 # target to build an object file
-example/server.cpp.o:
-	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/example/server.cpp.o
-.PHONY : example/server.cpp.o
+example/read/client.cpp.o:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/example/read/client.cpp.o
+.PHONY : example/read/client.cpp.o
 
-example/server.i: example/server.cpp.i
+example/read/client.i: example/read/client.cpp.i
 
-.PHONY : example/server.i
+.PHONY : example/read/client.i
 
 # target to preprocess a source file
-example/server.cpp.i:
-	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/example/server.cpp.i
-.PHONY : example/server.cpp.i
+example/read/client.cpp.i:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/example/read/client.cpp.i
+.PHONY : example/read/client.cpp.i
 
-example/server.s: example/server.cpp.s
+example/read/client.s: example/read/client.cpp.s
 
-.PHONY : example/server.s
+.PHONY : example/read/client.s
 
 # target to generate assembly for a file
-example/server.cpp.s:
-	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/example/server.cpp.s
-.PHONY : example/server.cpp.s
+example/read/client.cpp.s:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/example/read/client.cpp.s
+.PHONY : example/read/client.cpp.s
+
+example/read/server.o: example/read/server.cpp.o
+
+.PHONY : example/read/server.o
+
+# target to build an object file
+example/read/server.cpp.o:
+	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/example/read/server.cpp.o
+.PHONY : example/read/server.cpp.o
+
+example/read/server.i: example/read/server.cpp.i
+
+.PHONY : example/read/server.i
+
+# target to preprocess a source file
+example/read/server.cpp.i:
+	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/example/read/server.cpp.i
+.PHONY : example/read/server.cpp.i
+
+example/read/server.s: example/read/server.cpp.s
+
+.PHONY : example/read/server.s
+
+# target to generate assembly for a file
+example/read/server.cpp.s:
+	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/example/read/server.cpp.s
+.PHONY : example/read/server.cpp.s
 
 # Help Target
 help:
@@ -214,12 +214,12 @@ help:
 	@echo "... client"
 	@echo "... server"
 	@echo "... rdma"
-	@echo "... example/client.o"
-	@echo "... example/client.i"
-	@echo "... example/client.s"
-	@echo "... example/server.o"
-	@echo "... example/server.i"
-	@echo "... example/server.s"
+	@echo "... example/read/client.o"
+	@echo "... example/read/client.i"
+	@echo "... example/read/client.s"
+	@echo "... example/read/server.o"
+	@echo "... example/read/server.i"
+	@echo "... example/read/server.s"
 .PHONY : help
 
 

@@ -86,9 +86,9 @@ vector
 logging.hpp
 ../logging.hpp
 
-/home/hadoop/rlibTest/example/server.cpp
+/home/hadoop/rlibTest/example/read/server.cpp
 rdma_ctrl.hpp
-/home/hadoop/rlibTest/example/rdma_ctrl.hpp
+/home/hadoop/rlibTest/example/read/rdma_ctrl.hpp
 stdio.h
 -
 string.h

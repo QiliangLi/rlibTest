@@ -86,9 +86,9 @@ vector
 logging.hpp
 ../logging.hpp
 
-/home/hadoop/rlibTest/example/client.cpp
+/home/hadoop/rlibTest/example/read/client.cpp
 rdma_ctrl.hpp
-/home/hadoop/rlibTest/example/rdma_ctrl.hpp
+/home/hadoop/rlibTest/example/read/rdma_ctrl.hpp
 stdio.h
 -
 assert.h
