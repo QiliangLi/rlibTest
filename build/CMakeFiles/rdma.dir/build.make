@@ -57,15 +57,30 @@ include CMakeFiles/rdma.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/rdma.dir/flags.make
 
+CMakeFiles/rdma.dir/doorbell.cc.o: CMakeFiles/rdma.dir/flags.make
+CMakeFiles/rdma.dir/doorbell.cc.o: ../doorbell.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hadoop/rlibTest/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/rdma.dir/doorbell.cc.o"
+	/opt/rh/devtoolset-8/root/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rdma.dir/doorbell.cc.o -c /home/hadoop/rlibTest/doorbell.cc
+
+CMakeFiles/rdma.dir/doorbell.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/rdma.dir/doorbell.cc.i"
+	/opt/rh/devtoolset-8/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hadoop/rlibTest/doorbell.cc > CMakeFiles/rdma.dir/doorbell.cc.i
+
+CMakeFiles/rdma.dir/doorbell.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/rdma.dir/doorbell.cc.s"
+	/opt/rh/devtoolset-8/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hadoop/rlibTest/doorbell.cc -o CMakeFiles/rdma.dir/doorbell.cc.s
+
 # Object files for target rdma
-rdma_OBJECTS =
+rdma_OBJECTS = \
+"CMakeFiles/rdma.dir/doorbell.cc.o"
 
 # External object files for target rdma
 rdma_EXTERNAL_OBJECTS =
 
+librdma.a: CMakeFiles/rdma.dir/doorbell.cc.o
 librdma.a: CMakeFiles/rdma.dir/build.make
 librdma.a: CMakeFiles/rdma.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/hadoop/rlibTest/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Linking CXX static library librdma.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/hadoop/rlibTest/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library librdma.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/rdma.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/rdma.dir/link.txt --verbose=$(VERBOSE)
 

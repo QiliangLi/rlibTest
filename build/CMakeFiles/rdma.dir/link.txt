@@ -1,2 +1,2 @@
-/opt/rh/devtoolset-8/root/usr/bin/ar qc librdma.a  
+/opt/rh/devtoolset-8/root/usr/bin/ar qc librdma.a  CMakeFiles/rdma.dir/doorbell.cc.o
 /opt/rh/devtoolset-8/root/usr/bin/ranlib librdma.a

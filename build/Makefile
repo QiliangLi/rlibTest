@@ -175,6 +175,33 @@ rdma/fast:
 	$(MAKE) -f CMakeFiles/rdma.dir/build.make CMakeFiles/rdma.dir/build
 .PHONY : rdma/fast
 
+doorbell.o: doorbell.cc.o
+
+.PHONY : doorbell.o
+
+# target to build an object file
+doorbell.cc.o:
+	$(MAKE) -f CMakeFiles/rdma.dir/build.make CMakeFiles/rdma.dir/doorbell.cc.o
+.PHONY : doorbell.cc.o
+
+doorbell.i: doorbell.cc.i
+
+.PHONY : doorbell.i
+
+# target to preprocess a source file
+doorbell.cc.i:
+	$(MAKE) -f CMakeFiles/rdma.dir/build.make CMakeFiles/rdma.dir/doorbell.cc.i
+.PHONY : doorbell.cc.i
+
+doorbell.s: doorbell.cc.s
+
+.PHONY : doorbell.s
+
+# target to generate assembly for a file
+doorbell.cc.s:
+	$(MAKE) -f CMakeFiles/rdma.dir/build.make CMakeFiles/rdma.dir/doorbell.cc.s
+.PHONY : doorbell.cc.s
+
 example/cas/client.o: example/cas/client.cpp.o
 
 .PHONY : example/cas/client.o
@@ -296,6 +323,9 @@ help:
 	@echo "... read_client"
 	@echo "... server"
 	@echo "... rdma"
+	@echo "... doorbell.o"
+	@echo "... doorbell.i"
+	@echo "... doorbell.s"
 	@echo "... example/cas/client.o"
 	@echo "... example/cas/client.i"
 	@echo "... example/cas/client.s"

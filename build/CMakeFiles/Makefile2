@@ -81,7 +81,7 @@ all: CMakeFiles/cas_client.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/cas_client.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/hadoop/rlibTest/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/hadoop/rlibTest/build/CMakeFiles 4
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/cas_client.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/hadoop/rlibTest/build/CMakeFiles 0
 .PHONY : CMakeFiles/cas_client.dir/rule
@@ -108,7 +108,7 @@ clean: CMakeFiles/cas_client.dir/clean
 CMakeFiles/write_client.dir/all: CMakeFiles/rdma.dir/all
 	$(MAKE) -f CMakeFiles/write_client.dir/build.make CMakeFiles/write_client.dir/depend
 	$(MAKE) -f CMakeFiles/write_client.dir/build.make CMakeFiles/write_client.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/hadoop/rlibTest/build/CMakeFiles --progress-num=8,9 "Built target write_client"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/hadoop/rlibTest/build/CMakeFiles --progress-num=9,10 "Built target write_client"
 .PHONY : CMakeFiles/write_client.dir/all
 
 # Include target in all.
@@ -118,7 +118,7 @@ all: CMakeFiles/write_client.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/write_client.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/hadoop/rlibTest/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/hadoop/rlibTest/build/CMakeFiles 4
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/write_client.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/hadoop/rlibTest/build/CMakeFiles 0
 .PHONY : CMakeFiles/write_client.dir/rule
@@ -145,7 +145,7 @@ clean: CMakeFiles/write_client.dir/clean
 CMakeFiles/read_client.dir/all: CMakeFiles/rdma.dir/all
 	$(MAKE) -f CMakeFiles/read_client.dir/build.make CMakeFiles/read_client.dir/depend
 	$(MAKE) -f CMakeFiles/read_client.dir/build.make CMakeFiles/read_client.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/hadoop/rlibTest/build/CMakeFiles --progress-num=4,5 "Built target read_client"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/hadoop/rlibTest/build/CMakeFiles --progress-num=5,6 "Built target read_client"
 .PHONY : CMakeFiles/read_client.dir/all
 
 # Include target in all.
@@ -155,7 +155,7 @@ all: CMakeFiles/read_client.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/read_client.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/hadoop/rlibTest/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/hadoop/rlibTest/build/CMakeFiles 4
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/read_client.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/hadoop/rlibTest/build/CMakeFiles 0
 .PHONY : CMakeFiles/read_client.dir/rule
@@ -182,7 +182,7 @@ clean: CMakeFiles/read_client.dir/clean
 CMakeFiles/server.dir/all: CMakeFiles/rdma.dir/all
 	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/depend
 	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/hadoop/rlibTest/build/CMakeFiles --progress-num=6,7 "Built target server"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/hadoop/rlibTest/build/CMakeFiles --progress-num=7,8 "Built target server"
 .PHONY : CMakeFiles/server.dir/all
 
 # Include target in all.
@@ -192,7 +192,7 @@ all: CMakeFiles/server.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/server.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/hadoop/rlibTest/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/hadoop/rlibTest/build/CMakeFiles 4
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/server.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/hadoop/rlibTest/build/CMakeFiles 0
 .PHONY : CMakeFiles/server.dir/rule
@@ -219,7 +219,7 @@ clean: CMakeFiles/server.dir/clean
 CMakeFiles/rdma.dir/all:
 	$(MAKE) -f CMakeFiles/rdma.dir/build.make CMakeFiles/rdma.dir/depend
 	$(MAKE) -f CMakeFiles/rdma.dir/build.make CMakeFiles/rdma.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/hadoop/rlibTest/build/CMakeFiles --progress-num=3 "Built target rdma"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/hadoop/rlibTest/build/CMakeFiles --progress-num=3,4 "Built target rdma"
 .PHONY : CMakeFiles/rdma.dir/all
 
 # Include target in all.
@@ -229,7 +229,7 @@ all: CMakeFiles/rdma.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/rdma.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/hadoop/rlibTest/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/hadoop/rlibTest/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/rdma.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/hadoop/rlibTest/build/CMakeFiles 0
 .PHONY : CMakeFiles/rdma.dir/rule
