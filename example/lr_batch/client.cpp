@@ -1,7 +1,10 @@
 #include "rdma_ctrl.hpp"
+#include "doorbell.h"
 #include <stdio.h>
 #include <assert.h>
-#include <time.h>
+
+#define STATE_LOCKED 1 // Data cannot be written. Used for serializing transactions
+#define STATE_CLEAN 0
 
 int client_node_id = 0;
 int tcp_port = 8000;
@@ -43,37 +46,42 @@ int main(int argc, char *argv[])
     printf("client: QP connected!\n");
     // wc: work completion structure
     ibv_wc wc;
-    char *local_buf = buffer;
+    char *cas_buf = buffer;
+    char *data_buf = buffer + 8;
     uint64_t address = 0;
     int msg_len = 11; // length of "hello world"
 
-    ConnStatus rc;
+    std::shared_ptr<LockReadBatch> doorbell = std::make_shared<LockReadBatch>();
 
     int loop = 1000;
     struct timespec start = {0, 0};
     struct timespec end = {0, 0};
-    for (msg_len = 128; msg_len <= 4096; msg_len *= 2)
+    for (msg_len = 128; msg_len <= 2048; msg_len *= 2)
     {
-        // RDMA_LOG(INFO) << "Testing RDMA READ, msg_len " << msg_len << "\n";
+        // RDMA_LOG(INFO) << "Testing RDMA Batch(CAS+READ), msg_len " << msg_len << "\n";
         clock_gettime(CLOCK_REALTIME, &start);
         for (int i = 0; i < loop; i++)
         {
-            // read
-            rc = qp->post_send(IBV_WR_RDMA_READ, local_buf, msg_len, address, IBV_SEND_SIGNALED);
-            rc == SUCC ? : printf("client: post fail. rc=%d\n", rc);
-            rc = qp->poll_till_completion(wc, no_timeout);
-            rc == SUCC ? : printf("client: poll fail. rc=%d\n", rc);
+            doorbell->SetLockReq(cas_buf, 0, STATE_CLEAN, STATE_LOCKED);
+            doorbell->SetReadReq(data_buf, 8, msg_len); // Read "hello world"
+            if (!doorbell->SendReqs(qp))
+            {
+                RDMA_LOG(ERROR) << "Send doorbell requests fail!";
+            }
         }
         clock_gettime(CLOCK_REALTIME, &end);
-        long total=(end.tv_sec-start.tv_sec)*1000000000+(end.tv_nsec-start.tv_nsec);
-        printf("RDMA READ, msg_len %d B, avgLatency %f us\n", msg_len, total/(loop * 1000.0));
+        long total = (end.tv_sec - start.tv_sec) * 1000000000 + (end.tv_nsec - start.tv_nsec);
+        printf("RDMA Batch(CAS+READ), msg_len %d B, avgLatency %f us\n", msg_len, total / (loop * 1000.0));
     }
 
-    // // read
-    // rc = qp->post_send(IBV_WR_RDMA_READ, local_buf, msg_len, address, IBV_SEND_SIGNALED);
-    // rc == SUCC ? printf("client: post ok\n") : printf("client: post fail. rc=%d\n", rc);
-    // rc = qp->poll_till_completion(wc, no_timeout);
-    // rc == SUCC ? printf("client: poll ok\nmsg read: %s\n", local_buf) : printf("client: poll fail. rc=%d\n", rc);
+    // doorbell->SetLockReq(cas_buf, 0, STATE_CLEAN, STATE_LOCKED);
+    // doorbell->SetReadReq(data_buf, 8, 11); // Read "hello world"
+    // if (!doorbell->SendReqs(qp))
+    // {
+    //     RDMA_LOG(ERROR) << "Send doorbell requests fail!";
+    // }
+    // printf("cas_buf: %s\n", cas_buf);
+    // printf("data_buf: %s\n", data_buf);
 
     return 0;
 }

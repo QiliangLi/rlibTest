@@ -1,0 +1,1 @@
+/opt/rh/devtoolset-8/root/usr/bin/c++   -g  -rdynamic CMakeFiles/lrBatch_client.dir/example/lr_batch/client.cpp.o  -o lrBatch_client librdma.a -lpthread -libverbs 

@@ -47,28 +47,48 @@ int main(int argc, char *argv[])
     int msg_len = 11; // length of "hello world"
     ConnStatus rc;
 
-    // read
-    rc = qp->post_send(IBV_WR_RDMA_READ, local_buf, msg_len, address, IBV_SEND_SIGNALED);
-    rc == SUCC ? printf("client: post ok\n") : printf("client: post fail. rc=%d\n", rc);
-    rc = qp->poll_till_completion(wc, no_timeout);
-    rc == SUCC ? printf("client: poll ok\nmsg read: %s\n", local_buf) : printf("client: poll fail. rc=%d\n", rc);
+    int loop = 1000;
+    struct timespec start = {0, 0};
+    struct timespec end = {0, 0};
+    for (msg_len = 128; msg_len <= 4096; msg_len *= 2)
+    {
+        // RDMA_LOG(INFO) << "Testing RDMA WRITE, msg_len " << msg_len << "\n";
+        clock_gettime(CLOCK_REALTIME, &start);
+        for (int i = 0; i < loop; i++)
+        {
+            // write
+            rc = qp->post_send(IBV_WR_RDMA_WRITE, local_buf, msg_len, address, IBV_SEND_SIGNALED);
+            rc == SUCC ? : printf("client: post fail. rc=%d\n", rc);
+            rc = qp->poll_till_completion(wc, no_timeout);
+            rc == SUCC ? : printf("client: poll fail. rc=%d\n", rc);
+        }
+        clock_gettime(CLOCK_REALTIME, &end);
+        long total=(end.tv_sec-start.tv_sec)*1000000000+(end.tv_nsec-start.tv_nsec);
+        printf("RDMA WRITE, msg_len %d B, avgLatency %f us\n", msg_len, total/(loop * 1000.0));
+    }
 
-    // RDMA WRITE a string to remote and then RDMA READ it
-    // fill a string to the local register memory region
-    char s[] = "LQL233";
-    memcpy(local_buf, s, strlen(s));
+    // // read
+    // rc = qp->post_send(IBV_WR_RDMA_READ, local_buf, msg_len, address, IBV_SEND_SIGNALED);
+    // rc == SUCC ? printf("client: post ok\n") : printf("client: post fail. rc=%d\n", rc);
+    // rc = qp->poll_till_completion(wc, no_timeout);
+    // rc == SUCC ? printf("client: poll ok\nmsg read: %s\n", local_buf) : printf("client: poll fail. rc=%d\n", rc);
 
-    // write
-    rc = qp->post_send(IBV_WR_RDMA_WRITE, local_buf, 6, address, IBV_SEND_SIGNALED);
-    rc == SUCC ? printf("client: post ok\n") : printf("client: post fail. rc=%d\n", rc);
-    rc = qp->poll_till_completion(wc, no_timeout);
-    rc == SUCC ? printf("client: poll ok\n") : printf("client: poll fail. rc=%d\n", rc);
+    // // RDMA WRITE a string to remote and then RDMA READ it
+    // // fill a string to the local register memory region
+    // char s[] = "LQL233";
+    // memcpy(local_buf, s, strlen(s));
 
-    // read
-    rc = qp->post_send(IBV_WR_RDMA_READ, local_buf, msg_len, address, IBV_SEND_SIGNALED);
-    rc == SUCC ? printf("client: post ok\n") : printf("client: post fail. rc=%d\n", rc);
-    rc = qp->poll_till_completion(wc, no_timeout);
-    rc == SUCC ? printf("client: poll ok\nmsg read: %s\n", local_buf) : printf("client: poll fail. rc=%d\n", rc);
+    // // write
+    // rc = qp->post_send(IBV_WR_RDMA_WRITE, local_buf, 6, address, IBV_SEND_SIGNALED);
+    // rc == SUCC ? printf("client: post ok\n") : printf("client: post fail. rc=%d\n", rc);
+    // rc = qp->poll_till_completion(wc, no_timeout);
+    // rc == SUCC ? printf("client: poll ok\n") : printf("client: poll fail. rc=%d\n", rc);
+
+    // // read
+    // rc = qp->post_send(IBV_WR_RDMA_READ, local_buf, msg_len, address, IBV_SEND_SIGNALED);
+    // rc == SUCC ? printf("client: post ok\n") : printf("client: post fail. rc=%d\n", rc);
+    // rc = qp->poll_till_completion(wc, no_timeout);
+    // rc == SUCC ? printf("client: poll ok\nmsg read: %s\n", local_buf) : printf("client: poll fail. rc=%d\n", rc);
 
     return 0;
 }

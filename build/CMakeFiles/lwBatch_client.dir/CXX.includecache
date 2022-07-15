@@ -6,6 +6,10 @@
 
 #IncludeRegexTransform: 
 
+..//doorbell.h
+rdma_ctrl.hpp
+../rdma_ctrl.hpp
+
 ..//rdma_ctrl.hpp
 functional
 -
@@ -86,13 +90,13 @@ vector
 logging.hpp
 ../logging.hpp
 
-/home/hadoop/rlibTest/example/read/client.cpp
+/home/hadoop/rlibTest/example/lw_batch/client.cpp
 rdma_ctrl.hpp
-/home/hadoop/rlibTest/example/read/rdma_ctrl.hpp
+/home/hadoop/rlibTest/example/lw_batch/rdma_ctrl.hpp
+doorbell.h
+/home/hadoop/rlibTest/example/lw_batch/doorbell.h
 stdio.h
 -
 assert.h
--
-time.h
 -
 

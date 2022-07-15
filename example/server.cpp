@@ -20,9 +20,9 @@ int main(int argc, char *argv[])
     c->open_thread_local_device(idx);
 
     // register a buffer to the previous opened device, using id = 73
-    char *buffer = (char *)malloc(4096);
-    memset(buffer, 0, 4096);
-    RDMA_ASSERT(c->register_memory(73, buffer, 4096, c->get_device()) == true);
+    char *buffer = (char *)malloc(40960);
+    memset(buffer, 0, 40960);
+    RDMA_ASSERT(c->register_memory(73, buffer, 40960, c->get_device()) == true);
     printf("[server] memory registered\n");
 
     // fill a string to the register memory region

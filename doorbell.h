@@ -56,3 +56,17 @@ class WriteUnlockBatch : public DoorbellBatch {
   // Send doorbelled requests to the queue pair
   bool SendReqs(RCQP* qp);
 };
+
+class InvisibleWriteBatch : public DoorbellBatch {
+ public:
+  InvisibleWriteBatch() : DoorbellBatch() {}
+
+  // SetInvisibleReq and SetWriteRemoteReq are a doorbelled group
+  // First lock, then write
+  void SetInvisibleReq(char* local_addr, uint64_t remote_off, uint64_t compare, uint64_t swap);
+
+  void SetWriteRemoteReq(char* local_addr, uint64_t remote_off, size_t size);
+
+  // Send doorbelled requests to the queue pair
+  bool SendReqsSync(RCQP* qp);
+};

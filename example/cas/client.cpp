@@ -50,11 +50,29 @@ int main(int argc, char *argv[])
     int msg_len = 11; // length of "hello world"
     ConnStatus rc;
 
-    // cas
-    rc = qp->post_cas(local_buf, 0, STATE_CLEAN, STATE_LOCKED, IBV_SEND_SIGNALED);
-    rc == SUCC ? printf("client: post ok\n") : printf("client: post fail. rc=%d\n", rc);
-    rc = qp->poll_till_completion(wc, no_timeout);
-    rc == SUCC ? printf("client: poll ok\nmsg read: %s\n", local_buf) : printf("client: poll fail. rc=%d\n", rc);
+    int loop = 1000;
+    struct timespec start = {0, 0};
+    struct timespec end = {0, 0};
+
+    // RDMA_LOG(INFO) << "Testing RDMA CAS" << "\n";
+    clock_gettime(CLOCK_REALTIME, &start);
+    for (int i = 0; i < loop; i++)
+    {
+        // write
+        rc = qp->post_cas(local_buf, 0, STATE_CLEAN, STATE_LOCKED, IBV_SEND_SIGNALED);
+        rc == SUCC ? : printf("client: post fail. rc=%d\n", rc);
+        rc = qp->poll_till_completion(wc, no_timeout);
+        rc == SUCC ? : printf("client: poll fail. rc=%d\n", rc);
+    }
+    clock_gettime(CLOCK_REALTIME, &end);
+    long total=(end.tv_sec-start.tv_sec)*1000000000+(end.tv_nsec-start.tv_nsec);
+    printf("RDMA CAS, avgLatency %f us\n", total/(loop * 1000.0));
+
+    // // cas
+    // rc = qp->post_cas(local_buf, 0, STATE_CLEAN, STATE_LOCKED, IBV_SEND_SIGNALED);
+    // rc == SUCC ? printf("client: post ok\n") : printf("client: post fail. rc=%d\n", rc);
+    // rc = qp->poll_till_completion(wc, no_timeout);
+    // rc == SUCC ? printf("client: poll ok\nmsg read: %s\n", local_buf) : printf("client: poll fail. rc=%d\n", rc);
 
     // To verify a CAS request is successed, we should compare the value of local buf and compare(para in post_cas).
     // Equal means success, or means CAS failure.

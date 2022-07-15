@@ -111,6 +111,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named lrBatch_client
+
+# Build rule for target.
+lrBatch_client: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 lrBatch_client
+.PHONY : lrBatch_client
+
+# fast build rule for target.
+lrBatch_client/fast:
+	$(MAKE) -f CMakeFiles/lrBatch_client.dir/build.make CMakeFiles/lrBatch_client.dir/build
+.PHONY : lrBatch_client/fast
+
+#=============================================================================
 # Target rules for targets named cas_client
 
 # Build rule for target.
@@ -124,6 +137,19 @@ cas_client/fast:
 .PHONY : cas_client/fast
 
 #=============================================================================
+# Target rules for targets named lwBatch_client
+
+# Build rule for target.
+lwBatch_client: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 lwBatch_client
+.PHONY : lwBatch_client
+
+# fast build rule for target.
+lwBatch_client/fast:
+	$(MAKE) -f CMakeFiles/lwBatch_client.dir/build.make CMakeFiles/lwBatch_client.dir/build
+.PHONY : lwBatch_client/fast
+
+#=============================================================================
 # Target rules for targets named write_client
 
 # Build rule for target.
@@ -135,19 +161,6 @@ write_client: cmake_check_build_system
 write_client/fast:
 	$(MAKE) -f CMakeFiles/write_client.dir/build.make CMakeFiles/write_client.dir/build
 .PHONY : write_client/fast
-
-#=============================================================================
-# Target rules for targets named batchLR_client
-
-# Build rule for target.
-batchLR_client: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 batchLR_client
-.PHONY : batchLR_client
-
-# fast build rule for target.
-batchLR_client/fast:
-	$(MAKE) -f CMakeFiles/batchLR_client.dir/build.make CMakeFiles/batchLR_client.dir/build
-.PHONY : batchLR_client/fast
 
 #=============================================================================
 # Target rules for targets named read_client
@@ -215,33 +228,6 @@ doorbell.cc.s:
 	$(MAKE) -f CMakeFiles/rdma.dir/build.make CMakeFiles/rdma.dir/doorbell.cc.s
 .PHONY : doorbell.cc.s
 
-example/batch_lr/client.o: example/batch_lr/client.cpp.o
-
-.PHONY : example/batch_lr/client.o
-
-# target to build an object file
-example/batch_lr/client.cpp.o:
-	$(MAKE) -f CMakeFiles/batchLR_client.dir/build.make CMakeFiles/batchLR_client.dir/example/batch_lr/client.cpp.o
-.PHONY : example/batch_lr/client.cpp.o
-
-example/batch_lr/client.i: example/batch_lr/client.cpp.i
-
-.PHONY : example/batch_lr/client.i
-
-# target to preprocess a source file
-example/batch_lr/client.cpp.i:
-	$(MAKE) -f CMakeFiles/batchLR_client.dir/build.make CMakeFiles/batchLR_client.dir/example/batch_lr/client.cpp.i
-.PHONY : example/batch_lr/client.cpp.i
-
-example/batch_lr/client.s: example/batch_lr/client.cpp.s
-
-.PHONY : example/batch_lr/client.s
-
-# target to generate assembly for a file
-example/batch_lr/client.cpp.s:
-	$(MAKE) -f CMakeFiles/batchLR_client.dir/build.make CMakeFiles/batchLR_client.dir/example/batch_lr/client.cpp.s
-.PHONY : example/batch_lr/client.cpp.s
-
 example/cas/client.o: example/cas/client.cpp.o
 
 .PHONY : example/cas/client.o
@@ -268,6 +254,60 @@ example/cas/client.s: example/cas/client.cpp.s
 example/cas/client.cpp.s:
 	$(MAKE) -f CMakeFiles/cas_client.dir/build.make CMakeFiles/cas_client.dir/example/cas/client.cpp.s
 .PHONY : example/cas/client.cpp.s
+
+example/lr_batch/client.o: example/lr_batch/client.cpp.o
+
+.PHONY : example/lr_batch/client.o
+
+# target to build an object file
+example/lr_batch/client.cpp.o:
+	$(MAKE) -f CMakeFiles/lrBatch_client.dir/build.make CMakeFiles/lrBatch_client.dir/example/lr_batch/client.cpp.o
+.PHONY : example/lr_batch/client.cpp.o
+
+example/lr_batch/client.i: example/lr_batch/client.cpp.i
+
+.PHONY : example/lr_batch/client.i
+
+# target to preprocess a source file
+example/lr_batch/client.cpp.i:
+	$(MAKE) -f CMakeFiles/lrBatch_client.dir/build.make CMakeFiles/lrBatch_client.dir/example/lr_batch/client.cpp.i
+.PHONY : example/lr_batch/client.cpp.i
+
+example/lr_batch/client.s: example/lr_batch/client.cpp.s
+
+.PHONY : example/lr_batch/client.s
+
+# target to generate assembly for a file
+example/lr_batch/client.cpp.s:
+	$(MAKE) -f CMakeFiles/lrBatch_client.dir/build.make CMakeFiles/lrBatch_client.dir/example/lr_batch/client.cpp.s
+.PHONY : example/lr_batch/client.cpp.s
+
+example/lw_batch/client.o: example/lw_batch/client.cpp.o
+
+.PHONY : example/lw_batch/client.o
+
+# target to build an object file
+example/lw_batch/client.cpp.o:
+	$(MAKE) -f CMakeFiles/lwBatch_client.dir/build.make CMakeFiles/lwBatch_client.dir/example/lw_batch/client.cpp.o
+.PHONY : example/lw_batch/client.cpp.o
+
+example/lw_batch/client.i: example/lw_batch/client.cpp.i
+
+.PHONY : example/lw_batch/client.i
+
+# target to preprocess a source file
+example/lw_batch/client.cpp.i:
+	$(MAKE) -f CMakeFiles/lwBatch_client.dir/build.make CMakeFiles/lwBatch_client.dir/example/lw_batch/client.cpp.i
+.PHONY : example/lw_batch/client.cpp.i
+
+example/lw_batch/client.s: example/lw_batch/client.cpp.s
+
+.PHONY : example/lw_batch/client.s
+
+# target to generate assembly for a file
+example/lw_batch/client.cpp.s:
+	$(MAKE) -f CMakeFiles/lwBatch_client.dir/build.make CMakeFiles/lwBatch_client.dir/example/lw_batch/client.cpp.s
+.PHONY : example/lw_batch/client.cpp.s
 
 example/read/client.o: example/read/client.cpp.o
 
@@ -357,22 +397,26 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
+	@echo "... lrBatch_client"
 	@echo "... cas_client"
+	@echo "... lwBatch_client"
 	@echo "... write_client"
 	@echo "... rebuild_cache"
-	@echo "... batchLR_client"
 	@echo "... read_client"
 	@echo "... server"
 	@echo "... rdma"
 	@echo "... doorbell.o"
 	@echo "... doorbell.i"
 	@echo "... doorbell.s"
-	@echo "... example/batch_lr/client.o"
-	@echo "... example/batch_lr/client.i"
-	@echo "... example/batch_lr/client.s"
 	@echo "... example/cas/client.o"
 	@echo "... example/cas/client.i"
 	@echo "... example/cas/client.s"
+	@echo "... example/lr_batch/client.o"
+	@echo "... example/lr_batch/client.i"
+	@echo "... example/lr_batch/client.s"
+	@echo "... example/lw_batch/client.o"
+	@echo "... example/lw_batch/client.i"
+	@echo "... example/lw_batch/client.s"
 	@echo "... example/read/client.o"
 	@echo "... example/read/client.i"
 	@echo "... example/read/client.s"

@@ -3,8 +3,11 @@
 #include <stdio.h>
 #include <assert.h>
 
+#define STATE_VISIBLE 0x0000000000000000
+#define STATE_INVISIBLE 0x8000000000000000  // Data cannot be read
 #define STATE_LOCKED 1 // Data cannot be written. Used for serializing transactions
 #define STATE_CLEAN 0
+using lock_t = uint64_t; 
 
 int client_node_id = 0;
 int tcp_port = 8000;
@@ -51,15 +54,34 @@ int main(int argc, char *argv[])
     uint64_t address = 0;
     int msg_len = 11; // length of "hello world"
 
-    std::shared_ptr<LockReadBatch> doorbell = std::make_shared<LockReadBatch>();
-    doorbell->SetLockReq(cas_buf, 0, STATE_CLEAN, STATE_LOCKED);
-    doorbell->SetReadReq(data_buf, 8, 11); // Read "hello world"
-    if (!doorbell->SendReqs(qp))
+    std::shared_ptr<InvisibleWriteBatch> doorbell = std::make_shared<InvisibleWriteBatch>();
+    doorbell->SetInvisibleReq(cas_buf, 0, STATE_VISIBLE, STATE_INVISIBLE);
+    doorbell->SetWriteRemoteReq(data_buf, 8, msg_len);
+    if (!doorbell->SendReqsSync(qp))
     {
         RDMA_LOG(ERROR) << "Send doorbell requests fail!";
     }
-    printf("cas_buf: %s\n", cas_buf);
-    printf("data_buf: %s\n", data_buf);
+
+    // int loop = 1000;
+    // struct timespec start = {0, 0};
+    // struct timespec end = {0, 0};
+    // for (msg_len = 128; msg_len <= 2048; msg_len *= 2)
+    // {
+    //     // RDMA_LOG(INFO) << "Testing RDMA Batch(CAS+READ), msg_len " << msg_len << "\n";
+    //     clock_gettime(CLOCK_REALTIME, &start);
+    //     for (int i = 0; i < loop; i++)
+    //     {
+    //         doorbell->SetLockReq(cas_buf, 0, STATE_CLEAN, STATE_LOCKED);
+    //         doorbell->SetReadReq(data_buf, 8, msg_len); // Read "hello world"
+    //         if (!doorbell->SendReqs(qp))
+    //         {
+    //             RDMA_LOG(ERROR) << "Send doorbell requests fail!";
+    //         }
+    //     }
+    //     clock_gettime(CLOCK_REALTIME, &end);
+    //     long total = (end.tv_sec - start.tv_sec) * 1000000000 + (end.tv_nsec - start.tv_nsec);
+    //     printf("RDMA Batch(CAS+READ), msg_len %d B, avgLatency %f us\n", msg_len, total / (loop * 1000.0));
+    // }
 
     return 0;
 }
