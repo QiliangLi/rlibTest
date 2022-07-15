@@ -47,6 +47,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/cas_client.dir/DependInfo.cmake"
   "CMakeFiles/write_client.dir/DependInfo.cmake"
+  "CMakeFiles/batchLR_client.dir/DependInfo.cmake"
   "CMakeFiles/read_client.dir/DependInfo.cmake"
   "CMakeFiles/server.dir/DependInfo.cmake"
   "CMakeFiles/rdma.dir/DependInfo.cmake"

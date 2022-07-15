@@ -2,6 +2,7 @@
 /home/hadoop/rlibTest/build/CMakeFiles/cas_client.dir
 /home/hadoop/rlibTest/build/CMakeFiles/write_client.dir
 /home/hadoop/rlibTest/build/CMakeFiles/rebuild_cache.dir
+/home/hadoop/rlibTest/build/CMakeFiles/batchLR_client.dir
 /home/hadoop/rlibTest/build/CMakeFiles/read_client.dir
 /home/hadoop/rlibTest/build/CMakeFiles/server.dir
 /home/hadoop/rlibTest/build/CMakeFiles/rdma.dir

@@ -20,8 +20,11 @@ add_executable(server "example/server.cpp")
 add_executable(read_client "example/read/client.cpp")
 add_executable(write_client "example/write/client.cpp")
 add_executable(cas_client "example/cas/client.cpp")
+add_executable(batchLR_client "example/batch_lr/client.cpp")
 
 target_link_libraries(server rdma)
 target_link_libraries(read_client rdma)
 target_link_libraries(write_client rdma)
 target_link_libraries(cas_client rdma)
+target_link_libraries(batchLR_client rdma)
+

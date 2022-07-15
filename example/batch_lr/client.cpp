@@ -1,6 +1,10 @@
 #include "rdma_ctrl.hpp"
+#include "doorbell.h"
 #include <stdio.h>
 #include <assert.h>
+
+#define STATE_LOCKED 1 // Data cannot be written. Used for serializing transactions
+#define STATE_CLEAN 0
 
 int client_node_id = 0;
 int tcp_port = 8000;
@@ -42,33 +46,20 @@ int main(int argc, char *argv[])
     printf("client: QP connected!\n");
     // wc: work completion structure
     ibv_wc wc;
-    char *local_buf = buffer;
+    char *cas_buf = buffer;
+    char *data_buf = buffer + 8;
     uint64_t address = 0;
     int msg_len = 11; // length of "hello world"
-    ConnStatus rc;
 
-    // read
-    rc = qp->post_send(IBV_WR_RDMA_READ, local_buf, msg_len, address, IBV_SEND_SIGNALED);
-    rc == SUCC ? printf("client: post ok\n") : printf("client: post fail. rc=%d\n", rc);
-    rc = qp->poll_till_completion(wc, no_timeout);
-    rc == SUCC ? printf("client: poll ok\nmsg read: %s\n", local_buf) : printf("client: poll fail. rc=%d\n", rc);
-
-    // RDMA WRITE a string to remote and then RDMA READ it
-    // fill a string to the local register memory region
-    char s[] = "LQL233";
-    memcpy(local_buf, s, strlen(s));
-
-    // write
-    rc = qp->post_send(IBV_WR_RDMA_WRITE, local_buf, 6, address, IBV_SEND_SIGNALED);
-    rc == SUCC ? printf("client: post ok\n") : printf("client: post fail. rc=%d\n", rc);
-    rc = qp->poll_till_completion(wc, no_timeout);
-    rc == SUCC ? printf("client: poll ok\n") : printf("client: poll fail. rc=%d\n", rc);
-
-    // read
-    rc = qp->post_send(IBV_WR_RDMA_READ, local_buf, msg_len, address, IBV_SEND_SIGNALED);
-    rc == SUCC ? printf("client: post ok\n") : printf("client: post fail. rc=%d\n", rc);
-    rc = qp->poll_till_completion(wc, no_timeout);
-    rc == SUCC ? printf("client: poll ok\nmsg read: %s\n", local_buf) : printf("client: poll fail. rc=%d\n", rc);
+    std::shared_ptr<LockReadBatch> doorbell = std::make_shared<LockReadBatch>();
+    doorbell->SetLockReq(cas_buf, 0, STATE_CLEAN, STATE_LOCKED);
+    doorbell->SetReadReq(data_buf, 8, 11); // Read "hello world"
+    if (!doorbell->SendReqs(qp))
+    {
+        RDMA_LOG(ERROR) << "Send doorbell requests fail!";
+    }
+    printf("cas_buf: %s\n", cas_buf);
+    printf("data_buf: %s\n", data_buf);
 
     return 0;
 }

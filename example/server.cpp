@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
     printf("[server] memory registered\n");
 
     // fill a string to the register memory region
-    char s[] = "hello world";
+    char s[] = "LLLLLLLLhello world";
     memcpy(buffer, s, strlen(s));
 
     // MemoryAttr local_mr = c->get_local_mr(73);

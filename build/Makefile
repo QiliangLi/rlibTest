@@ -137,6 +137,19 @@ write_client/fast:
 .PHONY : write_client/fast
 
 #=============================================================================
+# Target rules for targets named batchLR_client
+
+# Build rule for target.
+batchLR_client: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 batchLR_client
+.PHONY : batchLR_client
+
+# fast build rule for target.
+batchLR_client/fast:
+	$(MAKE) -f CMakeFiles/batchLR_client.dir/build.make CMakeFiles/batchLR_client.dir/build
+.PHONY : batchLR_client/fast
+
+#=============================================================================
 # Target rules for targets named read_client
 
 # Build rule for target.
@@ -201,6 +214,33 @@ doorbell.s: doorbell.cc.s
 doorbell.cc.s:
 	$(MAKE) -f CMakeFiles/rdma.dir/build.make CMakeFiles/rdma.dir/doorbell.cc.s
 .PHONY : doorbell.cc.s
+
+example/batch_lr/client.o: example/batch_lr/client.cpp.o
+
+.PHONY : example/batch_lr/client.o
+
+# target to build an object file
+example/batch_lr/client.cpp.o:
+	$(MAKE) -f CMakeFiles/batchLR_client.dir/build.make CMakeFiles/batchLR_client.dir/example/batch_lr/client.cpp.o
+.PHONY : example/batch_lr/client.cpp.o
+
+example/batch_lr/client.i: example/batch_lr/client.cpp.i
+
+.PHONY : example/batch_lr/client.i
+
+# target to preprocess a source file
+example/batch_lr/client.cpp.i:
+	$(MAKE) -f CMakeFiles/batchLR_client.dir/build.make CMakeFiles/batchLR_client.dir/example/batch_lr/client.cpp.i
+.PHONY : example/batch_lr/client.cpp.i
+
+example/batch_lr/client.s: example/batch_lr/client.cpp.s
+
+.PHONY : example/batch_lr/client.s
+
+# target to generate assembly for a file
+example/batch_lr/client.cpp.s:
+	$(MAKE) -f CMakeFiles/batchLR_client.dir/build.make CMakeFiles/batchLR_client.dir/example/batch_lr/client.cpp.s
+.PHONY : example/batch_lr/client.cpp.s
 
 example/cas/client.o: example/cas/client.cpp.o
 
@@ -320,12 +360,16 @@ help:
 	@echo "... cas_client"
 	@echo "... write_client"
 	@echo "... rebuild_cache"
+	@echo "... batchLR_client"
 	@echo "... read_client"
 	@echo "... server"
 	@echo "... rdma"
 	@echo "... doorbell.o"
 	@echo "... doorbell.i"
 	@echo "... doorbell.s"
+	@echo "... example/batch_lr/client.o"
+	@echo "... example/batch_lr/client.i"
+	@echo "... example/batch_lr/client.s"
 	@echo "... example/cas/client.o"
 	@echo "... example/cas/client.i"
 	@echo "... example/cas/client.s"
