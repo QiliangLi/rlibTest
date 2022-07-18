@@ -1,21 +1,29 @@
-RDMA READ, msg_len 128 B, avgLatency 2.196764 us
-RDMA READ, msg_len 256 B, avgLatency 2.186171 us
-RDMA READ, msg_len 512 B, avgLatency 2.323207 us
+RDMA READ, msg_len 128 B, avgLatency  2.196764 us
+RDMA READ, msg_len 256 B, avgLatency  2.186171 us
+RDMA READ, msg_len 512 B, avgLatency  2.323207 us
 RDMA READ, msg_len 1024 B, avgLatency 2.635621 us
 RDMA READ, msg_len 2048 B, avgLatency 3.118538 us
 RDMA READ, msg_len 4096 B, avgLatency 3.964450 us
 
-RDMA WRITE, msg_len 128 B, avgLatency 2.036386 us
-RDMA WRITE, msg_len 256 B, avgLatency 2.007502 us
-RDMA WRITE, msg_len 512 B, avgLatency 2.149655 us
+RDMA WRITE, msg_len 128 B, avgLatency  2.036386 us
+RDMA WRITE, msg_len 256 B, avgLatency  2.007502 us
+RDMA WRITE, msg_len 512 B, avgLatency  2.149655 us
 RDMA WRITE, msg_len 1024 B, avgLatency 2.389565 us
 RDMA WRITE, msg_len 2048 B, avgLatency 2.853830 us
 RDMA WRITE, msg_len 4096 B, avgLatency 3.753048 us
 
 RDMA CAS, avgLatency 1.961962 us
 
-RDMA Batch(CAS+READ), msg_len 128 B, avgLatency 2.858785 us
-RDMA Batch(CAS+READ), msg_len 256 B, avgLatency 2.905434 us
-RDMA Batch(CAS+READ), msg_len 512 B, avgLatency 3.033880 us
-RDMA Batch(CAS+READ), msg_len 1024 B, avgLatency 3.320907 us
-RDMA Batch(CAS+READ), msg_len 2048 B, avgLatency 3.809666 us
+RDMA Batch(CAS+READ), msg_len 128 B, avgLatency  2.931087 us
+RDMA Batch(CAS+READ), msg_len 256 B, avgLatency  2.923559 us
+RDMA Batch(CAS+READ), msg_len 512 B, avgLatency  3.053052 us
+RDMA Batch(CAS+READ), msg_len 1024 B, avgLatency 3.299822 us
+RDMA Batch(CAS+READ), msg_len 2048 B, avgLatency 3.743698 us
+RDMA Batch(CAS+READ), msg_len 4096 B, avgLatency 4.683883 us
+
+RDMA Batch(CAS+WRITE), msg_len 128 B, avgLatency  2.758624 us
+RDMA Batch(CAS+WRITE), msg_len 256 B, avgLatency  2.758393 us
+RDMA Batch(CAS+WRITE), msg_len 512 B, avgLatency  2.872835 us
+RDMA Batch(CAS+WRITE), msg_len 1024 B, avgLatency 3.118988 us
+RDMA Batch(CAS+WRITE), msg_len 2048 B, avgLatency 3.586961 us
+RDMA Batch(CAS+WRITE), msg_len 4096 B, avgLatency 4.483590 us

@@ -20,10 +20,10 @@ int main(int argc, char *argv[])
 
     // client's local memory region
     // register a buffer to the previous opened device, using id = 73
-    char *buffer = (char *)malloc(4096);
-    memset(buffer, 0, 4096);
+    char *buffer = (char *)malloc(40960);
+    memset(buffer, 0, 40960);
     // parameters in register_memory: ids for client's local_mr, buffer, size, previously opened device of this thread (if it is already opened)
-    RDMA_ASSERT(c->register_memory(73, buffer, 4096, c->get_device()) == true);
+    RDMA_ASSERT(c->register_memory(73, buffer, 40960, c->get_device()) == true);
 
     // get remote server's memory region information via TCP
     // parameters in get_remote_mr: remote server ip, remote server port, Memory region ids for remote servers, returned MemoryAttr
@@ -56,7 +56,7 @@ int main(int argc, char *argv[])
     int loop = 1000;
     struct timespec start = {0, 0};
     struct timespec end = {0, 0};
-    for (msg_len = 128; msg_len <= 2048; msg_len *= 2)
+    for (msg_len = 128; msg_len <= 4096; msg_len *= 2)
     {
         // RDMA_LOG(INFO) << "Testing RDMA Batch(CAS+READ), msg_len " << msg_len << "\n";
         clock_gettime(CLOCK_REALTIME, &start);
