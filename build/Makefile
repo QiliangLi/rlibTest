@@ -111,6 +111,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named llBatch_client
+
+# Build rule for target.
+llBatch_client: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 llBatch_client
+.PHONY : llBatch_client
+
+# fast build rule for target.
+llBatch_client/fast:
+	$(MAKE) -f CMakeFiles/llBatch_client.dir/build.make CMakeFiles/llBatch_client.dir/build
+.PHONY : llBatch_client/fast
+
+#=============================================================================
 # Target rules for targets named lrBatch_client
 
 # Build rule for target.
@@ -255,6 +268,33 @@ example/cas/client.cpp.s:
 	$(MAKE) -f CMakeFiles/cas_client.dir/build.make CMakeFiles/cas_client.dir/example/cas/client.cpp.s
 .PHONY : example/cas/client.cpp.s
 
+example/ll_batch/client.o: example/ll_batch/client.cpp.o
+
+.PHONY : example/ll_batch/client.o
+
+# target to build an object file
+example/ll_batch/client.cpp.o:
+	$(MAKE) -f CMakeFiles/llBatch_client.dir/build.make CMakeFiles/llBatch_client.dir/example/ll_batch/client.cpp.o
+.PHONY : example/ll_batch/client.cpp.o
+
+example/ll_batch/client.i: example/ll_batch/client.cpp.i
+
+.PHONY : example/ll_batch/client.i
+
+# target to preprocess a source file
+example/ll_batch/client.cpp.i:
+	$(MAKE) -f CMakeFiles/llBatch_client.dir/build.make CMakeFiles/llBatch_client.dir/example/ll_batch/client.cpp.i
+.PHONY : example/ll_batch/client.cpp.i
+
+example/ll_batch/client.s: example/ll_batch/client.cpp.s
+
+.PHONY : example/ll_batch/client.s
+
+# target to generate assembly for a file
+example/ll_batch/client.cpp.s:
+	$(MAKE) -f CMakeFiles/llBatch_client.dir/build.make CMakeFiles/llBatch_client.dir/example/ll_batch/client.cpp.s
+.PHONY : example/ll_batch/client.cpp.s
+
 example/lr_batch/client.o: example/lr_batch/client.cpp.o
 
 .PHONY : example/lr_batch/client.o
@@ -397,6 +437,7 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
+	@echo "... llBatch_client"
 	@echo "... lrBatch_client"
 	@echo "... cas_client"
 	@echo "... lwBatch_client"
@@ -411,6 +452,9 @@ help:
 	@echo "... example/cas/client.o"
 	@echo "... example/cas/client.i"
 	@echo "... example/cas/client.s"
+	@echo "... example/ll_batch/client.o"
+	@echo "... example/ll_batch/client.i"
+	@echo "... example/ll_batch/client.s"
 	@echo "... example/lr_batch/client.o"
 	@echo "... example/lr_batch/client.i"
 	@echo "... example/lr_batch/client.s"

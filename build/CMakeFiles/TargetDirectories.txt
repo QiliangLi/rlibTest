@@ -1,4 +1,5 @@
 /home/hadoop/rlibTest/build/CMakeFiles/edit_cache.dir
+/home/hadoop/rlibTest/build/CMakeFiles/llBatch_client.dir
 /home/hadoop/rlibTest/build/CMakeFiles/lrBatch_client.dir
 /home/hadoop/rlibTest/build/CMakeFiles/cas_client.dir
 /home/hadoop/rlibTest/build/CMakeFiles/lwBatch_client.dir

@@ -29,6 +29,18 @@ class DoorbellBatch {
   struct ibv_send_wr* bad_sr;
 };
 
+class DoubleCASBatch : public DoorbellBatch {
+  public:
+    DoubleCASBatch() : DoorbellBatch() {}
+
+    void Set1stCAS(char* local_addr, uint64_t remote_off, uint64_t compare, uint64_t swap);
+
+    void Set2ndCAS(char* local_addr, uint64_t remote_off, uint64_t compare, uint64_t swap);
+
+    // Send doorbelled requests to the queue pair
+    bool SendReqs(RCQP* qp);
+};
+
 class LockReadBatch : public DoorbellBatch {
  public:
   LockReadBatch() : DoorbellBatch() {}

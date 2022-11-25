@@ -21,6 +21,42 @@ bool RDMABatchSync(RCQP *qp, ibv_send_wr *send_sr, ibv_send_wr **bad_sr_addr, in
     return true;
 }
 
+void DoubleCASBatch::Set1stCAS(char *local_addr, uint64_t remote_off, uint64_t compare, uint64_t swap)
+{
+    sr[0].opcode = IBV_WR_ATOMIC_CMP_AND_SWP;
+    sr[0].wr.atomic.remote_addr = remote_off;
+    sr[0].wr.atomic.compare_add = compare;
+    sr[0].wr.atomic.swap = swap;
+    sge[0].length = sizeof(uint64_t);
+    sge[0].addr = (uint64_t)local_addr;
+}
+
+void DoubleCASBatch::Set2ndCAS(char *local_addr, uint64_t remote_off, uint64_t compare, uint64_t swap)
+{
+    sr[1].opcode = IBV_WR_ATOMIC_CMP_AND_SWP;
+    sr[1].wr.atomic.remote_addr = remote_off;
+    sr[1].wr.atomic.compare_add = compare;
+    sr[1].wr.atomic.swap = swap;
+    sge[1].length = sizeof(uint64_t);
+    sge[1].addr = (uint64_t)local_addr;
+}
+
+bool DoubleCASBatch::SendReqs(RCQP *qp)
+{
+    // sr[0] must be an atomic operation
+    sr[0].wr.atomic.remote_addr += qp->remote_mr_.buf;
+    sr[0].wr.atomic.rkey = qp->remote_mr_.key;
+    sge[0].lkey = qp->local_mr_.key;
+
+    sr[1].wr.atomic.remote_addr += qp->remote_mr_.buf;
+    sr[1].wr.atomic.rkey = qp->remote_mr_.key;
+    sge[1].lkey = qp->local_mr_.key;
+
+    if (!RDMABatchSync(qp, &(sr[0]), &bad_sr, 1))
+        return false;
+    return true;
+}
+
 void LockReadBatch::SetLockReq(char *local_addr, uint64_t remote_off, uint64_t compare, uint64_t swap)
 {
     sr[0].opcode = IBV_WR_ATOMIC_CMP_AND_SWP;

@@ -2,6 +2,7 @@
 #include "rdma_ctrl.hpp"
 #include <stdio.h>
 #include <string.h>
+#include <assert.h>
 
 /**
  * Note, RDMA usually uses some other communication method (e.g. TCP/IP) to exchange QP informations.
@@ -23,10 +24,18 @@ int main(int argc, char *argv[])
     char *buffer = (char *)malloc(40960);
     memset(buffer, 0, 40960);
     RDMA_ASSERT(c->register_memory(73, buffer, 40960, c->get_device()) == true);
-    printf("[server] memory registered\n");
+    printf("[server] buffer registered\n");
+
+    char *b0 = (char*) malloc(4096);
+    char *b1 = (char*) malloc(4096);
+    memset(b0, 0, 4096);
+    memset(b1, 0, 4096);
+    RDMA_ASSERT(c->register_memory(74, b0, 4096, c->get_device()) == true);
+    RDMA_ASSERT(c->register_memory(75, b1, 4096, c->get_device()) == true);
+    printf("[server] b0 b1 registered\n");
 
     // fill a string to the register memory region
-    char s[] = "LLLLLLLLhello world";
+    char s[] = "ABCDEFGZhello world";
     memcpy(buffer, s, strlen(s));
 
     // MemoryAttr local_mr = c->get_local_mr(73);
@@ -42,6 +51,8 @@ int main(int argc, char *argv[])
     printf("start looping...\n");
     while (true)
     {
+        memcpy(s, buffer, strlen(s));
+        printf("memory region: %s\n", s);
         // This is RDMA, server does not need to do anything :)
         sleep(1);
     }

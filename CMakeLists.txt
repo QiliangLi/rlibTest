@@ -22,6 +22,7 @@ add_executable(write_client "example/write/client.cpp")
 add_executable(cas_client "example/cas/client.cpp")
 add_executable(lrBatch_client "example/lr_batch/client.cpp")
 add_executable(lwBatch_client "example/lw_batch/client.cpp")
+add_executable(llBatch_client "example/ll_batch/client.cpp")
 
 target_link_libraries(server rdma)
 target_link_libraries(read_client rdma)
@@ -29,4 +30,5 @@ target_link_libraries(write_client rdma)
 target_link_libraries(cas_client rdma)
 target_link_libraries(lrBatch_client rdma)
 target_link_libraries(lwBatch_client rdma)
+target_link_libraries(llBatch_client rdma)
 

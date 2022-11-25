@@ -1,8 +1,9 @@
 #include "rdma_ctrl.hpp"
+#include "doorbell.h"
 #include <stdio.h>
 #include <assert.h>
 
-#define STATE_LOCKED 1                      // Data cannot be written. Used for serializing transactions
+#define STATE_LOCKED 1 // Data cannot be written. Used for serializing transactions
 #define STATE_CLEAN 0
 
 int client_node_id = 0;
@@ -33,10 +34,10 @@ int main(int argc, char *argv[])
 
     // client's local memory region
     // register a buffer to the previous opened device, using id = 73
-    char *buffer = (char *)malloc(4096);
-    memset(buffer, 0, 4096);
+    char *buffer = (char *)malloc(40960);
+    memset(buffer, 0, 40960);
     // parameters in register_memory: ids for client's local_mr, buffer, size, previously opened device of this thread (if it is already opened)
-    RDMA_ASSERT(c->register_memory(73, buffer, 4096, c->get_device()) == true);
+    RDMA_ASSERT(c->register_memory(73, buffer, 40960, c->get_device()) == true);
 
     // get remote server's memory region information via TCP
     // parameters in get_remote_mr: remote server ip, remote server port, Memory region ids for remote servers, returned MemoryAttr
@@ -59,39 +60,49 @@ int main(int argc, char *argv[])
     printf("client: QP connected!\n");
     // wc: work completion structure
     ibv_wc wc;
-    char *local_buf = buffer;
+    char *cas_buf = buffer;
+    char *data_buf = buffer + 9;
     uint64_t address = 0;
     int msg_len = 11; // length of "hello world"
     ConnStatus rc;
 
+    std::shared_ptr<DoubleCASBatch> doorbell = std::make_shared<DoubleCASBatch>();
+
     // int loop = 1000;
     // struct timespec start = {0, 0};
     // struct timespec end = {0, 0};
-
-    // // RDMA_LOG(INFO) << "Testing RDMA CAS" << "\n";
-    // clock_gettime(CLOCK_REALTIME, &start);
-    // for (int i = 0; i < loop; i++)
+    // for (msg_len = 128; msg_len <= 4096; msg_len *= 2)
     // {
-    //     // write
-    //     rc = qp->post_cas(local_buf, 0, STATE_CLEAN, STATE_LOCKED, IBV_SEND_SIGNALED);
-    //     rc == SUCC ? : printf("client: post fail. rc=%d\n", rc);
-    //     rc = qp->poll_till_completion(wc, no_timeout);
-    //     rc == SUCC ? : printf("client: poll fail. rc=%d\n", rc);
+    //     // RDMA_LOG(INFO) << "Testing RDMA Batch(CAS+READ), msg_len " << msg_len << "\n";
+    //     clock_gettime(CLOCK_REALTIME, &start);
+    //     for (int i = 0; i < loop; i++)
+    //     {
+    //         doorbell->SetLockReq(cas_buf, 0, STATE_CLEAN, STATE_LOCKED);
+    //         doorbell->SetReadReq(data_buf, 8, msg_len); // Read "hello world"
+    //         if (!doorbell->SendReqs(qp))
+    //         {
+    //             RDMA_LOG(ERROR) << "Send doorbell requests fail!";
+    //         }
+    //     }
+    //     clock_gettime(CLOCK_REALTIME, &end);
+    //     long total = (end.tv_sec - start.tv_sec) * 1000000000 + (end.tv_nsec - start.tv_nsec);
+    //     printf("RDMA Batch(CAS+READ), msg_len %d B, avgLatency %f us\n", msg_len, total / (loop * 1000.0));
     // }
-    // clock_gettime(CLOCK_REALTIME, &end);
-    // long total=(end.tv_sec-start.tv_sec)*1000000000+(end.tv_nsec-start.tv_nsec);
-    // printf("RDMA CAS, avgLatency %f us\n", total/(loop * 1000.0));
 
-    // cas
-    // rc = qp->post_cas(local_buf, 0, STATE_CLEAN, STATE_LOCKED, IBV_SEND_SIGNALED);
-    rc = qp->post_cas(local_buf, 0, char2uint64("ABCDEFGZ"), char2uint64("SSSSSSSS"), IBV_SEND_SIGNALED);
-    rc == SUCC ? printf("client: post ok\n") : printf("client: post fail. rc=%d\n", rc);
+    doorbell->Set1stCAS(cas_buf, 0, char2uint64("SSSSSSSS"), char2uint64("LLLLLLLL"));
+    doorbell->Set2ndCAS(data_buf, 8, char2uint64("hello wo"), char2uint64("MMMMMMMM"));
+
+    if (!doorbell->SendReqs(qp))
+    {
+        RDMA_LOG(ERROR) << "Send doorbell requests fail!";
+    }
+    printf("cas_buf: %s\n", cas_buf);
+    printf("data_buf: %s\n", data_buf);
     rc = qp->poll_till_completion(wc, no_timeout);
-    rc == SUCC ? printf("client: poll ok\nmsg read: %s\n", local_buf) : printf("client: poll fail. rc=%d\n", rc);
+    rc == SUCC ? printf("client: poll ok\nmsg read: %s\n", cas_buf) : printf("client: poll fail. rc=%d\n", rc);
+    rc = qp->poll_till_completion(wc, no_timeout);
+    rc == SUCC ? printf("client: poll ok\nmsg read: %s\n", data_buf) : printf("client: poll fail. rc=%d\n", rc);
 
-    // To verify a CAS request is successed, we should compare the value of local buf and compare(para in post_cas).
-    // Equal means success, or means CAS failure.
-    // Client can successfully poll qp to get the processing result of CAS no matter the result is success or failure.
 
     return 0;
 }
