@@ -1,1 +1,0 @@
-/opt/rh/devtoolset-8/root/usr/bin/c++   -g  -rdynamic CMakeFiles/write_client.dir/example/write/client.cpp.o  -o write_client librdma.a -lpthread -libverbs 

@@ -1,1 +1,0 @@
-/opt/rh/devtoolset-8/root/usr/bin/c++   -g  -rdynamic CMakeFiles/read_client.dir/example/read/client.cpp.o  -o read_client librdma.a -lpthread -libverbs 

@@ -1,1 +1,0 @@
-/opt/rh/devtoolset-8/root/usr/bin/c++   -g  -rdynamic CMakeFiles/cas_client.dir/example/cas/client.cpp.o  -o cas_client librdma.a -lpthread -libverbs 
