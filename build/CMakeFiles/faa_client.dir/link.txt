@@ -1,0 +1,1 @@
+/opt/rh/devtoolset-8/root/usr/bin/c++   -g  -rdynamic CMakeFiles/faa_client.dir/example/faa/client.cpp.o  -o faa_client librdma.a -lpthread -libverbs 
