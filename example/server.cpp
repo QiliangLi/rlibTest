@@ -51,10 +51,10 @@ int main(int argc, char *argv[])
     printf("start looping...\n");
     while (true)
     {
-        memcpy(s, buffer, strlen(s));
-        printf("memory region: %s\n", s);
-        // This is RDMA, server does not need to do anything :)
-        sleep(1);
+        // memcpy(s, buffer, strlen(s));
+        // printf("memory region: %s\n", s);
+        // // This is RDMA, server does not need to do anything :)
+        // sleep(1);
     }
 
     return 0;

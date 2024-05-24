@@ -56,17 +56,6 @@ CMAKE_BINARY_DIR = /home/hadoop/rlibTest/build
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	/usr/cmake-3.14.5/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
-
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -77,6 +66,17 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
+	/usr/cmake-3.14.5/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -111,82 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named llBatch_client
+# Target rules for targets named server
 
 # Build rule for target.
-llBatch_client: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 llBatch_client
-.PHONY : llBatch_client
+server: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 server
+.PHONY : server
 
 # fast build rule for target.
-llBatch_client/fast:
-	$(MAKE) -f CMakeFiles/llBatch_client.dir/build.make CMakeFiles/llBatch_client.dir/build
-.PHONY : llBatch_client/fast
-
-#=============================================================================
-# Target rules for targets named lrBatch_client
-
-# Build rule for target.
-lrBatch_client: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 lrBatch_client
-.PHONY : lrBatch_client
-
-# fast build rule for target.
-lrBatch_client/fast:
-	$(MAKE) -f CMakeFiles/lrBatch_client.dir/build.make CMakeFiles/lrBatch_client.dir/build
-.PHONY : lrBatch_client/fast
-
-#=============================================================================
-# Target rules for targets named faa_client
-
-# Build rule for target.
-faa_client: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 faa_client
-.PHONY : faa_client
-
-# fast build rule for target.
-faa_client/fast:
-	$(MAKE) -f CMakeFiles/faa_client.dir/build.make CMakeFiles/faa_client.dir/build
-.PHONY : faa_client/fast
-
-#=============================================================================
-# Target rules for targets named cas_client
-
-# Build rule for target.
-cas_client: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 cas_client
-.PHONY : cas_client
-
-# fast build rule for target.
-cas_client/fast:
-	$(MAKE) -f CMakeFiles/cas_client.dir/build.make CMakeFiles/cas_client.dir/build
-.PHONY : cas_client/fast
-
-#=============================================================================
-# Target rules for targets named lwBatch_client
-
-# Build rule for target.
-lwBatch_client: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 lwBatch_client
-.PHONY : lwBatch_client
-
-# fast build rule for target.
-lwBatch_client/fast:
-	$(MAKE) -f CMakeFiles/lwBatch_client.dir/build.make CMakeFiles/lwBatch_client.dir/build
-.PHONY : lwBatch_client/fast
-
-#=============================================================================
-# Target rules for targets named write_client
-
-# Build rule for target.
-write_client: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 write_client
-.PHONY : write_client
-
-# fast build rule for target.
-write_client/fast:
-	$(MAKE) -f CMakeFiles/write_client.dir/build.make CMakeFiles/write_client.dir/build
-.PHONY : write_client/fast
+server/fast:
+	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/build
+.PHONY : server/fast
 
 #=============================================================================
 # Target rules for targets named read_client
@@ -202,17 +137,30 @@ read_client/fast:
 .PHONY : read_client/fast
 
 #=============================================================================
-# Target rules for targets named server
+# Target rules for targets named chain_walk_client
 
 # Build rule for target.
-server: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 server
-.PHONY : server
+chain_walk_client: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 chain_walk_client
+.PHONY : chain_walk_client
 
 # fast build rule for target.
-server/fast:
-	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/build
-.PHONY : server/fast
+chain_walk_client/fast:
+	$(MAKE) -f CMakeFiles/chain_walk_client.dir/build.make CMakeFiles/chain_walk_client.dir/build
+.PHONY : chain_walk_client/fast
+
+#=============================================================================
+# Target rules for targets named cas_client
+
+# Build rule for target.
+cas_client: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 cas_client
+.PHONY : cas_client
+
+# fast build rule for target.
+cas_client/fast:
+	$(MAKE) -f CMakeFiles/cas_client.dir/build.make CMakeFiles/cas_client.dir/build
+.PHONY : cas_client/fast
 
 #=============================================================================
 # Target rules for targets named rdma
@@ -226,6 +174,71 @@ rdma: cmake_check_build_system
 rdma/fast:
 	$(MAKE) -f CMakeFiles/rdma.dir/build.make CMakeFiles/rdma.dir/build
 .PHONY : rdma/fast
+
+#=============================================================================
+# Target rules for targets named write_client
+
+# Build rule for target.
+write_client: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 write_client
+.PHONY : write_client
+
+# fast build rule for target.
+write_client/fast:
+	$(MAKE) -f CMakeFiles/write_client.dir/build.make CMakeFiles/write_client.dir/build
+.PHONY : write_client/fast
+
+#=============================================================================
+# Target rules for targets named lwBatch_client
+
+# Build rule for target.
+lwBatch_client: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 lwBatch_client
+.PHONY : lwBatch_client
+
+# fast build rule for target.
+lwBatch_client/fast:
+	$(MAKE) -f CMakeFiles/lwBatch_client.dir/build.make CMakeFiles/lwBatch_client.dir/build
+.PHONY : lwBatch_client/fast
+
+#=============================================================================
+# Target rules for targets named faa_client
+
+# Build rule for target.
+faa_client: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 faa_client
+.PHONY : faa_client
+
+# fast build rule for target.
+faa_client/fast:
+	$(MAKE) -f CMakeFiles/faa_client.dir/build.make CMakeFiles/faa_client.dir/build
+.PHONY : faa_client/fast
+
+#=============================================================================
+# Target rules for targets named lrBatch_client
+
+# Build rule for target.
+lrBatch_client: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 lrBatch_client
+.PHONY : lrBatch_client
+
+# fast build rule for target.
+lrBatch_client/fast:
+	$(MAKE) -f CMakeFiles/lrBatch_client.dir/build.make CMakeFiles/lrBatch_client.dir/build
+.PHONY : lrBatch_client/fast
+
+#=============================================================================
+# Target rules for targets named llBatch_client
+
+# Build rule for target.
+llBatch_client: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 llBatch_client
+.PHONY : llBatch_client
+
+# fast build rule for target.
+llBatch_client/fast:
+	$(MAKE) -f CMakeFiles/llBatch_client.dir/build.make CMakeFiles/llBatch_client.dir/build
+.PHONY : llBatch_client/fast
 
 doorbell.o: doorbell.cc.o
 
@@ -389,6 +402,33 @@ example/lw_batch/client.cpp.s:
 	$(MAKE) -f CMakeFiles/lwBatch_client.dir/build.make CMakeFiles/lwBatch_client.dir/example/lw_batch/client.cpp.s
 .PHONY : example/lw_batch/client.cpp.s
 
+example/read/chain_walk.o: example/read/chain_walk.cpp.o
+
+.PHONY : example/read/chain_walk.o
+
+# target to build an object file
+example/read/chain_walk.cpp.o:
+	$(MAKE) -f CMakeFiles/chain_walk_client.dir/build.make CMakeFiles/chain_walk_client.dir/example/read/chain_walk.cpp.o
+.PHONY : example/read/chain_walk.cpp.o
+
+example/read/chain_walk.i: example/read/chain_walk.cpp.i
+
+.PHONY : example/read/chain_walk.i
+
+# target to preprocess a source file
+example/read/chain_walk.cpp.i:
+	$(MAKE) -f CMakeFiles/chain_walk_client.dir/build.make CMakeFiles/chain_walk_client.dir/example/read/chain_walk.cpp.i
+.PHONY : example/read/chain_walk.cpp.i
+
+example/read/chain_walk.s: example/read/chain_walk.cpp.s
+
+.PHONY : example/read/chain_walk.s
+
+# target to generate assembly for a file
+example/read/chain_walk.cpp.s:
+	$(MAKE) -f CMakeFiles/chain_walk_client.dir/build.make CMakeFiles/chain_walk_client.dir/example/read/chain_walk.cpp.s
+.PHONY : example/read/chain_walk.cpp.s
+
 example/read/client.o: example/read/client.cpp.o
 
 .PHONY : example/read/client.o
@@ -476,17 +516,18 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... edit_cache"
-	@echo "... llBatch_client"
-	@echo "... lrBatch_client"
-	@echo "... faa_client"
-	@echo "... cas_client"
-	@echo "... lwBatch_client"
-	@echo "... write_client"
 	@echo "... rebuild_cache"
-	@echo "... read_client"
 	@echo "... server"
+	@echo "... read_client"
+	@echo "... chain_walk_client"
+	@echo "... cas_client"
 	@echo "... rdma"
+	@echo "... write_client"
+	@echo "... lwBatch_client"
+	@echo "... faa_client"
+	@echo "... lrBatch_client"
+	@echo "... llBatch_client"
+	@echo "... edit_cache"
 	@echo "... doorbell.o"
 	@echo "... doorbell.i"
 	@echo "... doorbell.s"
@@ -505,6 +546,9 @@ help:
 	@echo "... example/lw_batch/client.o"
 	@echo "... example/lw_batch/client.i"
 	@echo "... example/lw_batch/client.s"
+	@echo "... example/read/chain_walk.o"
+	@echo "... example/read/chain_walk.i"
+	@echo "... example/read/chain_walk.s"
 	@echo "... example/read/client.o"
 	@echo "... example/read/client.i"
 	@echo "... example/read/client.s"

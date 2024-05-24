@@ -65,113 +65,113 @@ CMAKE_SOURCE_DIR = /home/hadoop/rlibTest
 CMAKE_BINARY_DIR = /home/hadoop/rlibTest/build
 
 #=============================================================================
-# Target rules for target CMakeFiles/llBatch_client.dir
+# Target rules for target CMakeFiles/server.dir
 
 # All Build rule for target.
-CMakeFiles/llBatch_client.dir/all: CMakeFiles/rdma.dir/all
-	$(MAKE) -f CMakeFiles/llBatch_client.dir/build.make CMakeFiles/llBatch_client.dir/depend
-	$(MAKE) -f CMakeFiles/llBatch_client.dir/build.make CMakeFiles/llBatch_client.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/hadoop/rlibTest/build/CMakeFiles --progress-num=5,6 "Built target llBatch_client"
-.PHONY : CMakeFiles/llBatch_client.dir/all
+CMakeFiles/server.dir/all: CMakeFiles/rdma.dir/all
+	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/depend
+	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/hadoop/rlibTest/build/CMakeFiles --progress-num=17,18 "Built target server"
+.PHONY : CMakeFiles/server.dir/all
 
 # Include target in all.
-all: CMakeFiles/llBatch_client.dir/all
+all: CMakeFiles/server.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/llBatch_client.dir/rule: cmake_check_build_system
+CMakeFiles/server.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/hadoop/rlibTest/build/CMakeFiles 4
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/llBatch_client.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/server.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/hadoop/rlibTest/build/CMakeFiles 0
-.PHONY : CMakeFiles/llBatch_client.dir/rule
+.PHONY : CMakeFiles/server.dir/rule
 
 # Convenience name for target.
-llBatch_client: CMakeFiles/llBatch_client.dir/rule
+server: CMakeFiles/server.dir/rule
 
-.PHONY : llBatch_client
-
-# clean rule for target.
-CMakeFiles/llBatch_client.dir/clean:
-	$(MAKE) -f CMakeFiles/llBatch_client.dir/build.make CMakeFiles/llBatch_client.dir/clean
-.PHONY : CMakeFiles/llBatch_client.dir/clean
+.PHONY : server
 
 # clean rule for target.
-clean: CMakeFiles/llBatch_client.dir/clean
+CMakeFiles/server.dir/clean:
+	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/clean
+.PHONY : CMakeFiles/server.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/server.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/lrBatch_client.dir
+# Target rules for target CMakeFiles/read_client.dir
 
 # All Build rule for target.
-CMakeFiles/lrBatch_client.dir/all: CMakeFiles/rdma.dir/all
-	$(MAKE) -f CMakeFiles/lrBatch_client.dir/build.make CMakeFiles/lrBatch_client.dir/depend
-	$(MAKE) -f CMakeFiles/lrBatch_client.dir/build.make CMakeFiles/lrBatch_client.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/hadoop/rlibTest/build/CMakeFiles --progress-num=7,8 "Built target lrBatch_client"
-.PHONY : CMakeFiles/lrBatch_client.dir/all
+CMakeFiles/read_client.dir/all: CMakeFiles/rdma.dir/all
+	$(MAKE) -f CMakeFiles/read_client.dir/build.make CMakeFiles/read_client.dir/depend
+	$(MAKE) -f CMakeFiles/read_client.dir/build.make CMakeFiles/read_client.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/hadoop/rlibTest/build/CMakeFiles --progress-num=15,16 "Built target read_client"
+.PHONY : CMakeFiles/read_client.dir/all
 
 # Include target in all.
-all: CMakeFiles/lrBatch_client.dir/all
+all: CMakeFiles/read_client.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/lrBatch_client.dir/rule: cmake_check_build_system
+CMakeFiles/read_client.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/hadoop/rlibTest/build/CMakeFiles 4
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/lrBatch_client.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/read_client.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/hadoop/rlibTest/build/CMakeFiles 0
-.PHONY : CMakeFiles/lrBatch_client.dir/rule
+.PHONY : CMakeFiles/read_client.dir/rule
 
 # Convenience name for target.
-lrBatch_client: CMakeFiles/lrBatch_client.dir/rule
+read_client: CMakeFiles/read_client.dir/rule
 
-.PHONY : lrBatch_client
-
-# clean rule for target.
-CMakeFiles/lrBatch_client.dir/clean:
-	$(MAKE) -f CMakeFiles/lrBatch_client.dir/build.make CMakeFiles/lrBatch_client.dir/clean
-.PHONY : CMakeFiles/lrBatch_client.dir/clean
+.PHONY : read_client
 
 # clean rule for target.
-clean: CMakeFiles/lrBatch_client.dir/clean
+CMakeFiles/read_client.dir/clean:
+	$(MAKE) -f CMakeFiles/read_client.dir/build.make CMakeFiles/read_client.dir/clean
+.PHONY : CMakeFiles/read_client.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/read_client.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/faa_client.dir
+# Target rules for target CMakeFiles/chain_walk_client.dir
 
 # All Build rule for target.
-CMakeFiles/faa_client.dir/all: CMakeFiles/rdma.dir/all
-	$(MAKE) -f CMakeFiles/faa_client.dir/build.make CMakeFiles/faa_client.dir/depend
-	$(MAKE) -f CMakeFiles/faa_client.dir/build.make CMakeFiles/faa_client.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/hadoop/rlibTest/build/CMakeFiles --progress-num=3,4 "Built target faa_client"
-.PHONY : CMakeFiles/faa_client.dir/all
+CMakeFiles/chain_walk_client.dir/all: CMakeFiles/rdma.dir/all
+	$(MAKE) -f CMakeFiles/chain_walk_client.dir/build.make CMakeFiles/chain_walk_client.dir/depend
+	$(MAKE) -f CMakeFiles/chain_walk_client.dir/build.make CMakeFiles/chain_walk_client.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/hadoop/rlibTest/build/CMakeFiles --progress-num=3,4 "Built target chain_walk_client"
+.PHONY : CMakeFiles/chain_walk_client.dir/all
 
 # Include target in all.
-all: CMakeFiles/faa_client.dir/all
+all: CMakeFiles/chain_walk_client.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/faa_client.dir/rule: cmake_check_build_system
+CMakeFiles/chain_walk_client.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/hadoop/rlibTest/build/CMakeFiles 4
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/faa_client.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/chain_walk_client.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/hadoop/rlibTest/build/CMakeFiles 0
-.PHONY : CMakeFiles/faa_client.dir/rule
+.PHONY : CMakeFiles/chain_walk_client.dir/rule
 
 # Convenience name for target.
-faa_client: CMakeFiles/faa_client.dir/rule
+chain_walk_client: CMakeFiles/chain_walk_client.dir/rule
 
-.PHONY : faa_client
-
-# clean rule for target.
-CMakeFiles/faa_client.dir/clean:
-	$(MAKE) -f CMakeFiles/faa_client.dir/build.make CMakeFiles/faa_client.dir/clean
-.PHONY : CMakeFiles/faa_client.dir/clean
+.PHONY : chain_walk_client
 
 # clean rule for target.
-clean: CMakeFiles/faa_client.dir/clean
+CMakeFiles/chain_walk_client.dir/clean:
+	$(MAKE) -f CMakeFiles/chain_walk_client.dir/build.make CMakeFiles/chain_walk_client.dir/clean
+.PHONY : CMakeFiles/chain_walk_client.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/chain_walk_client.dir/clean
 
 .PHONY : clean
 
@@ -213,39 +213,39 @@ clean: CMakeFiles/cas_client.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/lwBatch_client.dir
+# Target rules for target CMakeFiles/rdma.dir
 
 # All Build rule for target.
-CMakeFiles/lwBatch_client.dir/all: CMakeFiles/rdma.dir/all
-	$(MAKE) -f CMakeFiles/lwBatch_client.dir/build.make CMakeFiles/lwBatch_client.dir/depend
-	$(MAKE) -f CMakeFiles/lwBatch_client.dir/build.make CMakeFiles/lwBatch_client.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/hadoop/rlibTest/build/CMakeFiles --progress-num=9,10 "Built target lwBatch_client"
-.PHONY : CMakeFiles/lwBatch_client.dir/all
+CMakeFiles/rdma.dir/all:
+	$(MAKE) -f CMakeFiles/rdma.dir/build.make CMakeFiles/rdma.dir/depend
+	$(MAKE) -f CMakeFiles/rdma.dir/build.make CMakeFiles/rdma.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/hadoop/rlibTest/build/CMakeFiles --progress-num=13,14 "Built target rdma"
+.PHONY : CMakeFiles/rdma.dir/all
 
 # Include target in all.
-all: CMakeFiles/lwBatch_client.dir/all
+all: CMakeFiles/rdma.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/lwBatch_client.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/hadoop/rlibTest/build/CMakeFiles 4
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/lwBatch_client.dir/all
+CMakeFiles/rdma.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/hadoop/rlibTest/build/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/rdma.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/hadoop/rlibTest/build/CMakeFiles 0
-.PHONY : CMakeFiles/lwBatch_client.dir/rule
+.PHONY : CMakeFiles/rdma.dir/rule
 
 # Convenience name for target.
-lwBatch_client: CMakeFiles/lwBatch_client.dir/rule
+rdma: CMakeFiles/rdma.dir/rule
 
-.PHONY : lwBatch_client
-
-# clean rule for target.
-CMakeFiles/lwBatch_client.dir/clean:
-	$(MAKE) -f CMakeFiles/lwBatch_client.dir/build.make CMakeFiles/lwBatch_client.dir/clean
-.PHONY : CMakeFiles/lwBatch_client.dir/clean
+.PHONY : rdma
 
 # clean rule for target.
-clean: CMakeFiles/lwBatch_client.dir/clean
+CMakeFiles/rdma.dir/clean:
+	$(MAKE) -f CMakeFiles/rdma.dir/build.make CMakeFiles/rdma.dir/clean
+.PHONY : CMakeFiles/rdma.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/rdma.dir/clean
 
 .PHONY : clean
 
@@ -256,7 +256,7 @@ clean: CMakeFiles/lwBatch_client.dir/clean
 CMakeFiles/write_client.dir/all: CMakeFiles/rdma.dir/all
 	$(MAKE) -f CMakeFiles/write_client.dir/build.make CMakeFiles/write_client.dir/depend
 	$(MAKE) -f CMakeFiles/write_client.dir/build.make CMakeFiles/write_client.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/hadoop/rlibTest/build/CMakeFiles --progress-num=17,18 "Built target write_client"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/hadoop/rlibTest/build/CMakeFiles --progress-num=19,20 "Built target write_client"
 .PHONY : CMakeFiles/write_client.dir/all
 
 # Include target in all.
@@ -287,113 +287,150 @@ clean: CMakeFiles/write_client.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/read_client.dir
+# Target rules for target CMakeFiles/lwBatch_client.dir
 
 # All Build rule for target.
-CMakeFiles/read_client.dir/all: CMakeFiles/rdma.dir/all
-	$(MAKE) -f CMakeFiles/read_client.dir/build.make CMakeFiles/read_client.dir/depend
-	$(MAKE) -f CMakeFiles/read_client.dir/build.make CMakeFiles/read_client.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/hadoop/rlibTest/build/CMakeFiles --progress-num=13,14 "Built target read_client"
-.PHONY : CMakeFiles/read_client.dir/all
+CMakeFiles/lwBatch_client.dir/all: CMakeFiles/rdma.dir/all
+	$(MAKE) -f CMakeFiles/lwBatch_client.dir/build.make CMakeFiles/lwBatch_client.dir/depend
+	$(MAKE) -f CMakeFiles/lwBatch_client.dir/build.make CMakeFiles/lwBatch_client.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/hadoop/rlibTest/build/CMakeFiles --progress-num=11,12 "Built target lwBatch_client"
+.PHONY : CMakeFiles/lwBatch_client.dir/all
 
 # Include target in all.
-all: CMakeFiles/read_client.dir/all
+all: CMakeFiles/lwBatch_client.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/read_client.dir/rule: cmake_check_build_system
+CMakeFiles/lwBatch_client.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/hadoop/rlibTest/build/CMakeFiles 4
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/read_client.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/lwBatch_client.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/hadoop/rlibTest/build/CMakeFiles 0
-.PHONY : CMakeFiles/read_client.dir/rule
+.PHONY : CMakeFiles/lwBatch_client.dir/rule
 
 # Convenience name for target.
-read_client: CMakeFiles/read_client.dir/rule
+lwBatch_client: CMakeFiles/lwBatch_client.dir/rule
 
-.PHONY : read_client
-
-# clean rule for target.
-CMakeFiles/read_client.dir/clean:
-	$(MAKE) -f CMakeFiles/read_client.dir/build.make CMakeFiles/read_client.dir/clean
-.PHONY : CMakeFiles/read_client.dir/clean
+.PHONY : lwBatch_client
 
 # clean rule for target.
-clean: CMakeFiles/read_client.dir/clean
+CMakeFiles/lwBatch_client.dir/clean:
+	$(MAKE) -f CMakeFiles/lwBatch_client.dir/build.make CMakeFiles/lwBatch_client.dir/clean
+.PHONY : CMakeFiles/lwBatch_client.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/lwBatch_client.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/server.dir
+# Target rules for target CMakeFiles/faa_client.dir
 
 # All Build rule for target.
-CMakeFiles/server.dir/all: CMakeFiles/rdma.dir/all
-	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/depend
-	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/hadoop/rlibTest/build/CMakeFiles --progress-num=15,16 "Built target server"
-.PHONY : CMakeFiles/server.dir/all
+CMakeFiles/faa_client.dir/all: CMakeFiles/rdma.dir/all
+	$(MAKE) -f CMakeFiles/faa_client.dir/build.make CMakeFiles/faa_client.dir/depend
+	$(MAKE) -f CMakeFiles/faa_client.dir/build.make CMakeFiles/faa_client.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/hadoop/rlibTest/build/CMakeFiles --progress-num=5,6 "Built target faa_client"
+.PHONY : CMakeFiles/faa_client.dir/all
 
 # Include target in all.
-all: CMakeFiles/server.dir/all
+all: CMakeFiles/faa_client.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/server.dir/rule: cmake_check_build_system
+CMakeFiles/faa_client.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/hadoop/rlibTest/build/CMakeFiles 4
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/server.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/faa_client.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/hadoop/rlibTest/build/CMakeFiles 0
-.PHONY : CMakeFiles/server.dir/rule
+.PHONY : CMakeFiles/faa_client.dir/rule
 
 # Convenience name for target.
-server: CMakeFiles/server.dir/rule
+faa_client: CMakeFiles/faa_client.dir/rule
 
-.PHONY : server
-
-# clean rule for target.
-CMakeFiles/server.dir/clean:
-	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/clean
-.PHONY : CMakeFiles/server.dir/clean
+.PHONY : faa_client
 
 # clean rule for target.
-clean: CMakeFiles/server.dir/clean
+CMakeFiles/faa_client.dir/clean:
+	$(MAKE) -f CMakeFiles/faa_client.dir/build.make CMakeFiles/faa_client.dir/clean
+.PHONY : CMakeFiles/faa_client.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/faa_client.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/rdma.dir
+# Target rules for target CMakeFiles/lrBatch_client.dir
 
 # All Build rule for target.
-CMakeFiles/rdma.dir/all:
-	$(MAKE) -f CMakeFiles/rdma.dir/build.make CMakeFiles/rdma.dir/depend
-	$(MAKE) -f CMakeFiles/rdma.dir/build.make CMakeFiles/rdma.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/hadoop/rlibTest/build/CMakeFiles --progress-num=11,12 "Built target rdma"
-.PHONY : CMakeFiles/rdma.dir/all
+CMakeFiles/lrBatch_client.dir/all: CMakeFiles/rdma.dir/all
+	$(MAKE) -f CMakeFiles/lrBatch_client.dir/build.make CMakeFiles/lrBatch_client.dir/depend
+	$(MAKE) -f CMakeFiles/lrBatch_client.dir/build.make CMakeFiles/lrBatch_client.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/hadoop/rlibTest/build/CMakeFiles --progress-num=9,10 "Built target lrBatch_client"
+.PHONY : CMakeFiles/lrBatch_client.dir/all
 
 # Include target in all.
-all: CMakeFiles/rdma.dir/all
+all: CMakeFiles/lrBatch_client.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/rdma.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/hadoop/rlibTest/build/CMakeFiles 2
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/rdma.dir/all
+CMakeFiles/lrBatch_client.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/hadoop/rlibTest/build/CMakeFiles 4
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/lrBatch_client.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/hadoop/rlibTest/build/CMakeFiles 0
-.PHONY : CMakeFiles/rdma.dir/rule
+.PHONY : CMakeFiles/lrBatch_client.dir/rule
 
 # Convenience name for target.
-rdma: CMakeFiles/rdma.dir/rule
+lrBatch_client: CMakeFiles/lrBatch_client.dir/rule
 
-.PHONY : rdma
-
-# clean rule for target.
-CMakeFiles/rdma.dir/clean:
-	$(MAKE) -f CMakeFiles/rdma.dir/build.make CMakeFiles/rdma.dir/clean
-.PHONY : CMakeFiles/rdma.dir/clean
+.PHONY : lrBatch_client
 
 # clean rule for target.
-clean: CMakeFiles/rdma.dir/clean
+CMakeFiles/lrBatch_client.dir/clean:
+	$(MAKE) -f CMakeFiles/lrBatch_client.dir/build.make CMakeFiles/lrBatch_client.dir/clean
+.PHONY : CMakeFiles/lrBatch_client.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/lrBatch_client.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/llBatch_client.dir
+
+# All Build rule for target.
+CMakeFiles/llBatch_client.dir/all: CMakeFiles/rdma.dir/all
+	$(MAKE) -f CMakeFiles/llBatch_client.dir/build.make CMakeFiles/llBatch_client.dir/depend
+	$(MAKE) -f CMakeFiles/llBatch_client.dir/build.make CMakeFiles/llBatch_client.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/hadoop/rlibTest/build/CMakeFiles --progress-num=7,8 "Built target llBatch_client"
+.PHONY : CMakeFiles/llBatch_client.dir/all
+
+# Include target in all.
+all: CMakeFiles/llBatch_client.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/llBatch_client.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/hadoop/rlibTest/build/CMakeFiles 4
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/llBatch_client.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/hadoop/rlibTest/build/CMakeFiles 0
+.PHONY : CMakeFiles/llBatch_client.dir/rule
+
+# Convenience name for target.
+llBatch_client: CMakeFiles/llBatch_client.dir/rule
+
+.PHONY : llBatch_client
+
+# clean rule for target.
+CMakeFiles/llBatch_client.dir/clean:
+	$(MAKE) -f CMakeFiles/llBatch_client.dir/build.make CMakeFiles/llBatch_client.dir/clean
+.PHONY : CMakeFiles/llBatch_client.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/llBatch_client.dir/clean
 
 .PHONY : clean
 

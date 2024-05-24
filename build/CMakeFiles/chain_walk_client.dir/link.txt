@@ -1,0 +1,1 @@
+/opt/rh/devtoolset-8/root/usr/bin/c++   -g  -rdynamic CMakeFiles/chain_walk_client.dir/example/read/chain_walk.cpp.o  -o chain_walk_client librdma.a -lpthread -libverbs 
