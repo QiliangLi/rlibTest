@@ -50,7 +50,7 @@ int main(int argc, char *argv[])
 
     ConnStatus rc;
 
-    int loop = 100;
+    int loop = 5;
     struct timespec start = {0, 0};
     struct timespec end = {0, 0};
     for (walk_step = 1; walk_step <= 128; walk_step += 1)
