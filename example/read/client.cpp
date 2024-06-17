@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
     // get remote server's memory region information via TCP
     // parameters in get_remote_mr: remote server ip, remote server port, Memory region ids for remote servers, returned MemoryAttr
     MemoryAttr remote_mr;
-    while (QP::get_remote_mr("node13", server_port, 73, &remote_mr) != SUCC)
+    while (QP::get_remote_mr("node18", server_port, 73, &remote_mr) != SUCC)
     {
         usleep(2000);
     }
@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
     RCQP *qp = c->create_rc_qp(create_rc_idx(1, 0), c->get_device(), &local_mr);
     qp->bind_remote_mr(remote_mr); // bind to the previous allocated mr
 
-    while (qp->connect("node13", server_port) != SUCC)
+    while (qp->connect("node18", server_port) != SUCC)
     {
         usleep(2000);
     }
